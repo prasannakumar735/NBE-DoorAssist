@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+/*
+ * Centralized color system (light only — no dark mode)
+ * Brand / text tokens — single source for Tailwind utilities
+ */
+
+@theme inline {
+  /* Brand (user: FC8347) */
+  --color-brand: #fc8347;
+  --color-brand-hover: #e6733d;
+  --color-brand-light: #fff4ec;
+
+  /* Semantic */
+  --color-primary: #051125;
+  --color-background: #fbf9f8;
+  --color-text-primary: #1b1c1c;
+  --color-text-muted: #45474d;
+
+  /* Aliases (existing utility names) */
+  --color-on-surface: var(--color-text-primary);
+  --color-on-surface-variant: var(--color-text-muted);
+  --color-secondary: var(--color-text-muted);
+  --color-accent: var(--color-brand);
+  --color-accent-hover: var(--color-brand-hover);
+
+  --color-stitch-text: var(--color-text-primary);
+  --color-surface: var(--color-background);
+  --color-surface-container: #f0eded;
+  --color-surface-container-low: #f5f3f3;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-high: #eae8e7;
+  --color-surface-container-highest: #e4e2e2;
+  --color-on-primary: #ffffff;
+  --color-outline: #75777d;
+  --color-outline-variant: #c5c6cd;
+  --color-secondary-container: var(--color-brand-light);
+
+  --font-headline: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility font-label {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@utility technical-label {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  color: var(--color-text-primary);
+}
+
+* {
+  border-color: var(--color-outline-variant);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-brand) 28%, transparent);
+  color: var(--color-text-primary);
+}
+
+a,
+button {
+  transition: all 220ms ease;
+}
+
+/* Home — Stitch-style hover (ref: https://stitch.withgoogle.com/preview/2802522509342399074) */
+.home-hero-card {
+  transition:
+    outline 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+
+.home-hero-card:hover {
+  outline: 4px solid #f97316;
+  transform: scale(1.01);
+  z-index: 30;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+.home-hero-card-overlay {
+  background-color: transparent;
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.home-hero-card:hover .home-hero-card-overlay {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.home-hero-card-media {
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+
+.home-hero-card:hover .home-hero-card-media {
+  transform: scale(1.08);
+}
+
+.home-highlight-card {
+  transition:
+    outline 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+}
+
+.home-highlight-card:hover {
+  outline: 4px solid #f97316;
+  transform: scale(1.01);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Project lifecycle — End-to-end flow (product pages) */
+@keyframes lifecycle-pulse-ring {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.14);
+    opacity: 0.06;
+  }
+}
+
+@keyframes lifecycle-node-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes lifecycle-flow-shimmer {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 200% 50%;
+    opacity: 0.5;
+  }
+}
+
+@keyframes lifecycle-orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.lifecycle-node-pulse {
+  animation: lifecycle-pulse-ring 3.2s ease-in-out infinite;
+}
+
+.lifecycle-node {
+  animation: lifecycle-node-float 4.5s ease-in-out infinite;
+}
+
+.lifecycle-flow-segment {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, #fc8347 35%, transparent),
+    #fc8347,
+    color-mix(in srgb, #fc8347 35%, transparent),
+    transparent
+  );
+  background-size: 220% 100%;
+  animation: lifecycle-flow-shimmer 2.8s ease-in-out infinite;
+}
+
+.lifecycle-timeline-track {
+  background: linear-gradient(
+    180deg,
+    #fc8347,
+    color-mix(in srgb, #fc8347 25%, transparent),
+    #fc8347,
+    color-mix(in srgb, #fc8347 20%, transparent)
+  );
+  background-size: 100% 220%;
+  animation: lifecycle-flow-shimmer 3.4s ease-in-out infinite;
+}
+
+.lifecycle-cycle-ring {
+  width: min(28rem, 78vw);
+  height: min(28rem, 78vw);
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, #fc8347 28%, transparent);
+  animation: lifecycle-orbit-spin 100s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lifecycle-node-pulse,
+  .lifecycle-node,
+  .lifecycle-flow-segment,
+  .lifecycle-timeline-track,
+  .lifecycle-cycle-ring {
+    animation: none !important;
+  }
+
+  .lifecycle-node-pulse {
+    opacity: 0.12;
+    transform: scale(1.08);
+  }
+}

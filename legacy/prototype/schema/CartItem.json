@@ -1,0 +1,36 @@
+{
+  "name": "CartItem",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Reference to Product"
+    },
+    "product_title": {
+      "type": "string",
+      "description": "Product name snapshot"
+    },
+    "product_image": {
+      "type": "string",
+      "description": "Product image snapshot"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 1
+    },
+    "unit_price": {
+      "type": "number"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "User session or user ID"
+    }
+  },
+  "required": [
+    "product_id",
+    "quantity"
+  ]
+}

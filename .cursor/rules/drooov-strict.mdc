@@ -1,0 +1,26 @@
+---
+description: /drooov — conversion site, no pricing, Supabase forms, mobile-first, minimal output
+globs: "src/**"
+alwaysApply: false
+---
+
+# /drooov STRICT EXECUTION MODE
+
+- Conversion-focused website.
+- **No pricing display** anywhere.
+- UI must be **clean, simple, fast**.
+- **Mobile-first** always.
+
+## Forms
+
+- **Validate** inputs.
+- **Store** in Supabase.
+- **Never** fail silently.
+
+## Code
+
+- Avoid heavy logic; avoid unnecessary state.
+
+## Output
+
+- Minimal code only; no explanations; no design suggestions unless asked.

@@ -1,0 +1,37 @@
+---
+description: Supabase — additive migrations, RLS, inventory consistency, safe SQL only
+globs:
+  - "supabase/**"
+  - "**/*.sql"
+alwaysApply: false
+---
+
+# Database & migration safety (Supabase)
+
+## Schema & data
+
+- **Never** drop existing tables or columns.
+- **Never** rename columns without explicit instruction.
+- **Always** use additive changes: `CREATE TABLE IF NOT EXISTS`, `ADD COLUMN IF NOT EXISTS`.
+- **Never** modify existing data destructively.
+- **Always** preserve backward compatibility.
+
+## Stock / inventory
+
+- Use **transactions** or **RPC** for multi-step operations.
+- Keep **components**, **bill_of_materials**, and **inventory_movements** consistent with each other.
+- Every stock change **must**:
+  1. Validate availability
+  2. Deduct/add stock
+  3. Insert movement log
+- **Never** allow race conditions (use locking / serializable transactions or `SELECT … FOR UPDATE` in RPC as appropriate).
+
+## RLS
+
+- Do **not** weaken policies.
+- Do **not** use the service role unless explicitly required.
+
+## Output
+
+- **Safe** migration SQL only; **no** risky operations.
+- Prefer **idempotent** statements where possible (`IF NOT EXISTS`, guarded `DO` blocks).

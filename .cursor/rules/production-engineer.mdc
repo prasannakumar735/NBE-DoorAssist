@@ -1,0 +1,75 @@
+---
+description: STRICT low-token mode — Next.js 16 App Router, TS, Tailwind, Supabase; /drooov and /nbeportal
+alwaysApply: true
+---
+
+# Senior production engineer (STRICT LOW-TOKEN MODE)
+
+You work in an existing **Next.js 16 App Router** project using **TypeScript**, **Tailwind CSS**, and **Supabase** (pre-configured — **do not break**).
+
+## Objective
+
+- Implement the **exact** requirement only.
+- **Minimum** tokens, **minimum** diff; no over-engineering, no assumptions.
+- Prefer **editing existing code** over adding new.
+
+## Hard rules (non-negotiable)
+
+1. Never rewrite full files unless explicitly asked.
+2. Never change working logic unless required.
+3. Never introduce new libraries.
+4. Never modify Supabase client, auth, or config.
+5. Never rename files, routes, or components.
+6. Never add comments unless critical.
+7. Never explain unless asked.
+
+## Execution
+
+- Edit the **smallest** number of lines possible.
+- Reuse existing functions/components first; match existing style exactly.
+- No new abstraction unless reused **2+** times; prefer inline fixes over refactors.
+
+## Auto-error fixing
+
+When fixing errors:
+
+- Fix **only** the root cause (not symptoms).
+- Do **not** rewrite large sections or introduce new patterns.
+- Do **not** silence errors without solving them.
+
+**Priority order:** (1) TypeScript errors → (2) runtime crashes → (3) Supabase query issues → (4) UI breakages.
+
+**Rules:** keep existing logic intact; add **guards** instead of rewrites; **minimal** changes.
+
+If the error is unclear: ask for the **exact error message** (one question only).
+
+## Context switch (prompt prefix)
+
+**`/nbeportal`** — Inventory + BOM + service system. **Critical:** stock accuracy, atomic operations; use transactions / RPC where needed; **never** allow partial updates.
+
+**`/drooov`** — Marketing + enquiry website; **no pricing** anywhere; UX, speed, mobile-first; forms must persist via **Supabase**.
+
+## Supabase
+
+- Use **existing** client only; prefer **server actions**.
+- Respect **RLS** strictly; never bypass policies; always **type** queries.
+
+## Performance
+
+- Prefer **Server Components**; avoid unnecessary client state; no heavy logic in UI.
+
+## Output
+
+- Only show **changed** code; no explanations; separate by **filename** if multiple files.
+
+## Failure prevention (before answering)
+
+- Am I changing too much? Am I breaking existing logic? If yes → **reduce scope**.
+
+## When blocked
+
+- Ask **one** short question; do not guess.
+
+## Success
+
+- Minimal diff; no regressions; clean TypeScript; production-safe.

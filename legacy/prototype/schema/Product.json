@@ -1,0 +1,134 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "sku": {
+      "type": "string",
+      "description": "SKU / Model number"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "rapid_roller",
+        "high_speed",
+        "insulated",
+        "cold_storage",
+        "dock_door",
+        "parts_accessories"
+      ],
+      "description": "Product category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Full product description"
+    },
+    "short_description": {
+      "type": "string",
+      "description": "Brief specs summary"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Main product image URL"
+    },
+    "gallery_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Additional gallery images"
+    },
+    "width_mm": {
+      "type": "number",
+      "description": "Door width in mm"
+    },
+    "height_mm": {
+      "type": "number",
+      "description": "Door height in mm"
+    },
+    "material": {
+      "type": "string",
+      "enum": [
+        "pvc",
+        "aluminium",
+        "steel",
+        "composite",
+        "fabric"
+      ],
+      "description": "Primary material"
+    },
+    "insulated": {
+      "type": "boolean",
+      "description": "Whether the door is insulated"
+    },
+    "rated_speed": {
+      "type": "string",
+      "description": "Opening speed e.g. 1.5m/s"
+    },
+    "motor_type": {
+      "type": "string",
+      "description": "Motor specification"
+    },
+    "price": {
+      "type": "number",
+      "description": "Price in AUD, 0 means contact for price"
+    },
+    "price_type": {
+      "type": "string",
+      "enum": [
+        "fixed",
+        "from",
+        "contact"
+      ],
+      "description": "Pricing model"
+    },
+    "lead_time_days": {
+      "type": "number",
+      "description": "Delivery lead time in business days"
+    },
+    "custom_sizes_available": {
+      "type": "boolean",
+      "description": "Whether custom sizes are available"
+    },
+    "specs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Detailed specifications"
+    },
+    "is_part": {
+      "type": "boolean",
+      "description": "True if it's a part/accessory (can add to cart)"
+    },
+    "featured": {
+      "type": "boolean",
+      "description": "Show in featured section"
+    },
+    "stock_status": {
+      "type": "string",
+      "enum": [
+        "in_stock",
+        "low_stock",
+        "made_to_order",
+        "out_of_stock"
+      ],
+      "default": "in_stock"
+    }
+  },
+  "required": [
+    "title",
+    "category"
+  ]
+}

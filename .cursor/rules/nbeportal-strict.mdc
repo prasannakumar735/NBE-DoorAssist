@@ -1,0 +1,20 @@
+---
+description: /nbeportal — atomic DB, stock integrity, RLS, inventory movements (paths **/nbeportal/**)
+globs: "**/nbeportal/**"
+alwaysApply: false
+---
+
+# /nbeportal STRICT EXECUTION MODE
+
+- **Zero tolerance** for data inconsistency.
+- All DB operations must be **atomic**.
+- **Never** allow partial stock updates.
+- Prefer **RPC / transactions** over multiple queries.
+- **Validate** inputs before DB writes.
+- **Always log** inventory movements if stock changes.
+- **Never** bypass RLS.
+- **Never** trust client-side values.
+
+## Output
+
+- Minimal code only; no explanations; no optional improvements.
