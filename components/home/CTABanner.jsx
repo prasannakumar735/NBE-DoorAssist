@@ -6,7 +6,7 @@ import ScrollReveal from "../motion/ScrollReveal";
 
 export default function CTABanner() {
   return (
-    <section className="py-20 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-brandDark via-brand to-brandDark relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="h-full w-full" style={{
           backgroundImage: 'repeating-linear-gradient(-45deg, #000 0, #000 1px, transparent 0, transparent 10px)',
@@ -15,15 +15,15 @@ export default function CTABanner() {
 
       <div className="max-w-4xl mx-auto px-6 text-center relative">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight font-heading">
             Ready to Upgrade Your Facility?
           </h2>
-          <p className="text-orange-100 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-white/85 text-lg mb-10 max-w-2xl mx-auto">
             Get a custom quote for your industrial rapid roller doors today. Free consultation, competitive pricing, Australia-wide delivery.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href={createPageUrl("Quote")}>
-              <Button size="lg" className="bg-white text-orange-600 hover:bg-orange-50 px-10 py-6 text-base font-bold rounded-xl group">
+              <Button size="lg" className="bg-white text-brand hover:bg-surface-low px-10 py-6 text-base font-bold rounded-xl group">
                 Get My Custom Quote
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>

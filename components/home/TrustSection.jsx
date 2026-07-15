@@ -41,10 +41,10 @@ export default function TrustSection() {
         {/* Trust badges */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <span className="text-orange-500 text-sm font-semibold tracking-widest uppercase mb-4 block">
+            <span className="text-brand text-sm font-semibold tracking-widest uppercase mb-4 block">
               Why drooov
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight font-heading">
               Trusted Across Australia
             </h2>
           </div>
@@ -57,8 +57,8 @@ export default function TrustSection() {
                 whileHover={{ y: -4 }}
                 className="bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 text-center"
               >
-                <div className="w-14 h-14 mx-auto rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
-                  <badge.icon className="w-7 h-7 text-orange-500" />
+                <div className="w-14 h-14 mx-auto rounded-xl bg-brand/10 flex items-center justify-center mb-4">
+                  <badge.icon className="w-7 h-7 text-brand" />
                 </div>
                 <h3 className="text-white font-bold mb-1">{badge.title}</h3>
                 <p className="text-sm text-slate-400">{badge.desc}</p>
@@ -80,7 +80,7 @@ export default function TrustSection() {
               <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6">
                 <div className="flex gap-1 mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-orange-500 fill-orange-500" />
+                    <Star key={j} className="w-4 h-4 text-brand fill-brand" />
                   ))}
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed mb-6">"{t.quote}"</p>

@@ -43,10 +43,10 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <ScrollReveal>
           <div className="text-center mb-20">
-            <span className="text-orange-500 text-sm font-semibold tracking-widest uppercase mb-4 block">
+            <span className="text-brand text-sm font-semibold tracking-widest uppercase mb-4 block">
               The Process
             </span>
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight font-heading">
               How It Works
             </h2>
           </div>
@@ -58,7 +58,7 @@ export default function HowItWorks() {
             {/* Connecting line */}
             <div className="absolute top-12 left-0 right-0 h-px bg-slate-700" />
             <motion.div
-              className="absolute top-12 left-0 h-px bg-gradient-to-r from-orange-500 to-orange-500/0"
+              className="absolute top-12 left-0 h-px bg-gradient-to-r from-brand to-brand/0"
               initial={{ width: "0%" }}
               whileInView={{ width: "100%" }}
               viewport={{ once: true }}
@@ -73,8 +73,8 @@ export default function HowItWorks() {
                       whileHover={{ scale: 1.1, rotate: -5 }}
                       className="w-24 h-24 mx-auto rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center mb-6 relative"
                     >
-                      <step.icon className="w-10 h-10 text-orange-500" />
-                      <div className="absolute -top-3 -right-3 w-7 h-7 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center">
+                      <step.icon className="w-10 h-10 text-brand" />
+                      <div className="absolute -top-3 -right-3 w-7 h-7 rounded-full bg-brand text-white text-xs font-bold flex items-center justify-center">
                         {i + 1}
                       </div>
                     </motion.div>
@@ -94,12 +94,12 @@ export default function HowItWorks() {
               <div className="flex gap-5">
                 <div className="flex flex-col items-center">
                   <div className="w-14 h-14 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center flex-shrink-0">
-                    <step.icon className="w-6 h-6 text-orange-500" />
+                    <step.icon className="w-6 h-6 text-brand" />
                   </div>
                   {i < steps.length - 1 && <div className="w-px flex-1 bg-slate-700 mt-3" />}
                 </div>
                 <div className="pb-8">
-                  <span className="text-xs text-orange-500 font-bold">Step {i + 1}</span>
+                  <span className="text-xs text-brand font-bold">Step {i + 1}</span>
                   <h3 className="text-lg font-bold text-white mt-1">{step.title}</h3>
                   <p className="text-sm text-slate-400 mt-1">{step.description}</p>
                 </div>

@@ -23,7 +23,7 @@ export default function FeaturedProducts({ products = [] }) {
                   Product range
                 </span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-ink [font-family:var(--font-heading)]">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-ink font-heading">
                 Explore the range
               </h2>
               <p className="text-slate-600 text-sm md:text-base mt-3 max-w-xl">
