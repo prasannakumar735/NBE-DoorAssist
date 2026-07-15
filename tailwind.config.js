@@ -17,6 +17,7 @@ export default {
         ink: "#1c1a17",
         paper: "#ffffff",
         "surface-low": "#f7f5f2",
+        mist: "#f7f5f2",
         "surface-sunken": "#efece5",
         "on-surface-variant": "#5b5750",
         line: "#e4e1d9",
