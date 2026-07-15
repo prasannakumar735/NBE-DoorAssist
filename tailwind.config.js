@@ -22,6 +22,7 @@ export default {
         "on-surface-variant": "#5b5750",
         line: "#e4e1d9",
         steel: "#4a4e45",
+        graphite: "#1c1a17",
         // Hero-only palette: HeroSection.jsx is intentionally kept on the
         // site's previous blue/Inter look while the rest of the site moves
         // to the orange/Roboto system above. Do not repoint these.
@@ -62,6 +63,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      maxWidth: {
+        site: "80rem",
+      },
+      transitionTimingFunction: {
+        premium: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
       borderRadius: {
         lg: "var(--radius)",
