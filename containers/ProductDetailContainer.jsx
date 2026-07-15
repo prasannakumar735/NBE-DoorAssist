@@ -6,6 +6,12 @@ import ProductDetail from "@/pages/ProductDetail";
 export default function ProductDetailContainer() {
   const { id: productId } = useParams();
 
+  const { data: allProducts = [] } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => base44.entities.Product.list(),
+    initialData: [],
+  });
+
   const { data: product = null, isLoading } = useQuery({
     queryKey: ["product", productId],
     queryFn: () =>
@@ -16,16 +22,24 @@ export default function ProductDetailContainer() {
     initialData: null,
   });
 
+  const relatedProducts = product
+    ? allProducts.filter((p) => p.id !== product.id && p.category === product.category).slice(0, 3)
+    : [];
+
+  const renderLink = ({ href, className, children }) => (
+    <Link to={href} className={className}>
+      {children}
+    </Link>
+  );
+
   return (
     <ProductDetail
       product={product}
       isLoading={isLoading}
       backHref="/rapid-roller-doors"
-      renderLink={({ href, className, children }) => (
-        <Link to={href} className={className}>
-          {children}
-        </Link>
-      )}
+      renderLink={renderLink}
+      relatedProducts={relatedProducts}
+      getRelatedHref={(p) => `/rapid-roller-doors/${p.id}`}
     />
   );
 }

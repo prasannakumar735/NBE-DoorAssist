@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { Search, SlidersHorizontal, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
   { value: "all", label: "All Categories" },
@@ -26,127 +23,117 @@ const materials = [
   { value: "fabric", label: "Fabric" },
 ];
 
+const stockOptions = [
+  { value: "all", label: "All Stock" },
+  { value: "in_stock", label: "In Stock" },
+  { value: "low_stock", label: "Low Stock" },
+  { value: "made_to_order", label: "Made to Order" },
+];
+
+const insulationOptions = [
+  { value: "all", label: "All" },
+  { value: "yes", label: "Insulated" },
+  { value: "no", label: "Non-Insulated" },
+];
+
 const sortOptions = [
   { value: "featured", label: "Featured" },
   { value: "newest", label: "Newest" },
   { value: "title_az", label: "A → Z" },
 ];
 
+function FacetGroup({ title, options, value, onChange }) {
+  return (
+    <div>
+      <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-on-surface-variant mb-3">{title}</h3>
+      <div className="space-y-1">
+        {options.map((o) => {
+          const active = (value || "all") === o.value;
+          return (
+            <button
+              key={o.value}
+              type="button"
+              onClick={() => onChange(o.value)}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
+                active ? "bg-brand/10 text-brand font-semibold" : "text-ink hover:bg-surface-low"
+              }`}
+            >
+              {o.label}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function ProductFilters({ filters, onFilterChange, resultCount }) {
-  const [showAdvanced, setShowAdvanced] = useState(false);
-  
   const activeFilters = Object.entries(filters).filter(
     ([key, val]) => val && val !== "all" && val !== "" && key !== "sort"
   );
 
   const labelFor = (key, val) => {
-    if (key === "category") return categories.find(c => c.value === val)?.label || val;
-    if (key === "material") return materials.find(m => m.value === val)?.label || val;
+    if (key === "category") return categories.find((c) => c.value === val)?.label || val;
+    if (key === "material") return materials.find((m) => m.value === val)?.label || val;
+    if (key === "stock") return stockOptions.find((s) => s.value === val)?.label || val;
     if (key === "insulated") return val === "yes" ? "Insulated" : val === "no" ? "Non-insulated" : val;
     return val;
   };
 
   const update = (key, value) => onFilterChange({ ...filters, [key]: value });
-  const clearAll = () => onFilterChange({ search: "", category: "all", material: "all", insulated: "all", sort: "featured" });
+  const clearAll = () =>
+    onFilterChange({ search: "", category: "all", material: "all", stock: "all", insulated: "all", sort: "featured" });
 
   return (
-    <div className="space-y-4">
-      {/* Main search row */}
-      <div className="flex flex-col md:flex-row gap-3">
-        <div className="relative flex-1">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
-          <Input
-            placeholder="Search doors, parts, models..."
-            value={filters.search || ""}
-            onChange={(e) => update("search", e.target.value)}
-            className="pl-12 bg-white border-slate-200 text-slate-900 placeholder:text-slate-400 h-12 rounded-xl focus:border-orange-600 focus:ring-orange-600/20 shadow-sm"
-          />
-        </div>
-        <Select value={filters.category || "all"} onValueChange={(v) => update("category", v)}>
-          <SelectTrigger className="w-full md:w-56 bg-white border-slate-200 text-slate-800 h-12 rounded-xl shadow-sm">
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
-          <SelectContent className="bg-white border-slate-200">
-            {categories.map(c => (
-              <SelectItem key={c.value} value={c.value} className="text-slate-800 focus:bg-slate-100 focus:text-slate-900">{c.label}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select value={filters.sort || "featured"} onValueChange={(v) => update("sort", v)}>
-          <SelectTrigger className="w-full md:w-44 bg-white border-slate-200 text-slate-800 h-12 rounded-xl shadow-sm">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent className="bg-white border-slate-200">
-            {sortOptions.map(s => (
-              <SelectItem key={s.value} value={s.value} className="text-slate-800 focus:bg-slate-100 focus:text-slate-900">{s.label}</SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Button
-          variant="outline"
-          onClick={() => setShowAdvanced(!showAdvanced)}
-          className={`border-slate-200 bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 h-12 rounded-xl shadow-sm ${showAdvanced ? 'border-orange-400 text-orange-700' : ''}`}
-        >
-          <SlidersHorizontal className="w-4 h-4 mr-2" />
-          Filters
-        </Button>
+    <aside className="space-y-6 bg-white border border-line rounded-2xl p-6">
+      <div className="relative">
+        <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-on-surface-variant" />
+        <Input
+          placeholder="Search doors, parts, models..."
+          value={filters.search || ""}
+          onChange={(e) => update("search", e.target.value)}
+          className="pl-10 bg-white border-line text-ink placeholder:text-on-surface-variant h-11 rounded-xl focus:border-brand focus:ring-brand/20"
+        />
       </div>
 
-      {/* Advanced filters */}
-      <AnimatePresence>
-        {showAdvanced && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="flex flex-wrap gap-3 p-4 bg-white border border-slate-200 rounded-xl shadow-sm">
-              <Select value={filters.material || "all"} onValueChange={(v) => update("material", v)}>
-                <SelectTrigger className="w-44 bg-white border-slate-200 text-slate-800 rounded-lg">
-                  <SelectValue placeholder="Material" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-slate-200">
-                  {materials.map(m => (
-                    <SelectItem key={m.value} value={m.value} className="text-slate-800 focus:bg-slate-100 focus:text-slate-900">{m.label}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Select value={filters.insulated || "all"} onValueChange={(v) => update("insulated", v)}>
-                <SelectTrigger className="w-44 bg-white border-slate-200 text-slate-800 rounded-lg">
-                  <SelectValue placeholder="Insulation" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-slate-200">
-                  <SelectItem value="all" className="text-slate-800 focus:bg-slate-100 focus:text-slate-900">All</SelectItem>
-                  <SelectItem value="yes" className="text-slate-800 focus:bg-slate-100 focus:text-slate-900">Insulated</SelectItem>
-                  <SelectItem value="no" className="text-slate-800 focus:bg-slate-100 focus:text-slate-900">Non-Insulated</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div>
+        <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-on-surface-variant mb-3">Sort by</h3>
+        <Select value={filters.sort || "featured"} onValueChange={(v) => update("sort", v)}>
+          <SelectTrigger className="w-full bg-white border-line text-ink h-11 rounded-xl">
+            <SelectValue placeholder="Sort by" />
+          </SelectTrigger>
+          <SelectContent className="bg-white border-line">
+            {sortOptions.map((s) => (
+              <SelectItem key={s.value} value={s.value} className="text-ink focus:bg-surface-low focus:text-ink">
+                {s.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
 
-      {/* Active filters + count */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 flex-wrap">
+      {activeFilters.length > 0 && (
+        <div className="flex flex-wrap gap-2 pb-2 border-b border-line">
           {activeFilters.map(([key, val]) => (
-            <Badge key={key} className="bg-orange-500/10 text-orange-700 border-orange-500/30 text-xs">
-              {key}: {labelFor(key, val)}
+            <Badge key={key} className="bg-brand/10 text-brand border-brand/30 text-xs">
+              {labelFor(key, val)}
               <button onClick={() => update(key, key === "search" ? "" : "all")} className="ml-1.5">
                 <X className="w-3 h-3" />
               </button>
             </Badge>
           ))}
-          {activeFilters.length > 0 && (
-            <button onClick={clearAll} className="text-xs text-slate-600 hover:text-orange-700 ml-2">
-              Clear all
-            </button>
-          )}
+          <button onClick={clearAll} className="text-xs text-on-surface-variant hover:text-brand ml-1">
+            Clear all
+          </button>
         </div>
-        <span className="text-sm text-slate-600">{resultCount} products</span>
-      </div>
-    </div>
+      )}
+
+      <FacetGroup title="Category" options={categories} value={filters.category} onChange={(v) => update("category", v)} />
+      <FacetGroup title="Material" options={materials} value={filters.material} onChange={(v) => update("material", v)} />
+      <FacetGroup title="Stock status" options={stockOptions} value={filters.stock} onChange={(v) => update("stock", v)} />
+      <FacetGroup title="Insulation" options={insulationOptions} value={filters.insulated} onChange={(v) => update("insulated", v)} />
+
+      <div className="pt-4 border-t border-line text-sm text-on-surface-variant">{resultCount} products</div>
+    </aside>
   );
 }
