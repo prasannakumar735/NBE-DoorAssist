@@ -20,6 +20,7 @@ const trustBadges = [
 export default function ProductDetail({
   product,
   isLoading = false,
+  family = "rapid-door",
   backHref,
   onBack,
   renderLink,
@@ -30,6 +31,10 @@ export default function ProductDetail({
 }) {
   const [activeImage, setActiveImage] = useState(0);
   const [showQuote, setShowQuote] = useState(false);
+  const isPvc = family === "pvc";
+  const hubLabel = isPvc ? "PVC Strip Curtains" : "Rapid Roller Doors";
+  const primaryCtaLabel = isPvc ? "Configure Curtain" : "Request a Quote";
+  const primaryCtaHref = isPvc ? `/custom-curtain-builder?product=${product?.id}` : undefined;
 
   if (isLoading) {
     return (
@@ -68,7 +73,7 @@ export default function ProductDetail({
             <a href={createPageUrl("Home")} className="hover:text-brand">Home</a>
             <ChevronRight className="w-3.5 h-3.5" />
             <LinkWrapper href={backHref} onClick={onBack} renderLink={renderLink} className="hover:text-brand">
-              Products
+              {hubLabel}
             </LinkWrapper>
             <ChevronRight className="w-3.5 h-3.5" />
             <span className="hover:text-brand">{categoryLabel}</span>
@@ -249,19 +254,36 @@ export default function ProductDetail({
               </div>
 
               {/* CTA */}
-              <div className="flex gap-3 mb-8">
-                <Button onClick={() => setShowQuote(true)}
-                  className="flex-1 bg-brand hover:bg-brandDark text-white py-6 rounded-xl font-bold text-base shadow-sm">
-                  <FileText className="w-5 h-5 mr-2" />
-                  Request Quote
-                </Button>
+              <div className="flex flex-wrap gap-3 mb-8">
+                {isPvc ? (
+                  <LinkWrapper href={primaryCtaHref} renderLink={renderLink} className="flex-1">
+                    <Button className="w-full bg-brand hover:bg-brandDark text-white py-6 rounded-xl font-bold text-base shadow-sm">
+                      <FileText className="w-5 h-5 mr-2" />
+                      {primaryCtaLabel}
+                    </Button>
+                  </LinkWrapper>
+                ) : (
+                  <Button onClick={() => setShowQuote(true)}
+                    className="flex-1 bg-brand hover:bg-brandDark text-white py-6 rounded-xl font-bold text-base shadow-sm">
+                    <FileText className="w-5 h-5 mr-2" />
+                    {primaryCtaLabel}
+                  </Button>
+                )}
                 <Button
                   variant="outline"
                   onClick={() => setShowQuote(true)}
                   className="border-line bg-white text-ink hover:bg-surface-low py-6 rounded-xl font-bold text-base shadow-sm"
                 >
-                  Enquire Now
+                  {isPvc ? "Request Quote" : "Enquire Now"}
                 </Button>
+                <LinkWrapper href={`/compare?family=${family}&product=${product.id}`} renderLink={renderLink}>
+                  <Button
+                    variant="outline"
+                    className="border-line bg-white text-ink hover:bg-surface-low py-6 rounded-xl font-bold text-base shadow-sm"
+                  >
+                    Add to Compare
+                  </Button>
+                </LinkWrapper>
               </div>
 
               {/* Description */}

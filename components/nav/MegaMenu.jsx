@@ -13,18 +13,18 @@ const RAPID_CATEGORIES = [
 ];
 
 const PVC_CATEGORIES = [
-  { label: "Standard Clear PVC", href: "/products?category=pvc_strip_curtains" },
-  { label: "Coolroom PVC", href: "/products?category=pvc_strip_curtains" },
-  { label: "Freezer Grade PVC", href: "/products?category=pvc_strip_curtains" },
-  { label: "Anti-Insect PVC", href: "/products?category=pvc_strip_curtains" },
-  { label: "Welding PVC", href: "/products?category=pvc_strip_curtains" },
-  { label: "Replacement PVC Strips", href: "/products?category=pvc_strip_curtains" },
+  { label: "Standard Clear PVC", href: "/products?category=pvc_strip_curtains&q=standard" },
+  { label: "Coolroom PVC", href: "/products?category=pvc_strip_curtains&q=freezer" },
+  { label: "Freezer Grade PVC", href: "/products?category=pvc_strip_curtains&q=freezer" },
+  { label: "Anti-Insect PVC", href: "/products?category=pvc_strip_curtains&q=insect" },
+  { label: "Heavy Duty / Forklift PVC", href: "/products?category=pvc_strip_curtains&q=ribbed" },
+  { label: "Replacement PVC Strips", href: "/replacement-strips" },
 ];
 
 const SHOP_LINKS = [
   { label: "All Products", href: "/products" },
   { label: "Rapid Roller Doors", href: "/rapid-roller-doors" },
-  { label: "PVC Strip Curtains", href: "/products?category=pvc_strip_curtains" },
+  { label: "PVC Strip Curtains", href: "/pvc-strip-curtains" },
 ];
 
 export default function MegaMenu({ open, onClose }) {
@@ -105,7 +105,7 @@ export default function MegaMenu({ open, onClose }) {
                 ))}
               </div>
               {pvcLine?.image && (
-                <a href="/products?category=pvc_strip_curtains" onClick={onClose} className="mt-4 block group">
+                <a href="/pvc-strip-curtains" onClick={onClose} className="mt-4 block group">
                   <div className="aspect-[16/6] rounded-xl overflow-hidden bg-surface-low">
                     <img
                       src={pvcLine.image}

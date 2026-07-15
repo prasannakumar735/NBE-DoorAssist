@@ -10,12 +10,15 @@ export default function ProductsContainer() {
     initialData: [],
   });
 
+  const detailHref = (product) =>
+    product?.category === "pvc_strip_curtains" ? `/pvc-strip-curtains/${product.id}` : `/rapid-roller-doors/${product.id}`;
+
   return (
     <Products
       products={products}
       isLoading={isLoading}
-      getProductDetailHref={(product) => `/rapid-roller-doors/${product.id}`}
-      getProductCtaHref={(product) => `/rapid-roller-doors/${product.id}`}
+      getProductDetailHref={detailHref}
+      getProductCtaHref={detailHref}
       renderProductLink={({ href, className, children }) => (
         <Link to={href} className={className}>
           {children}

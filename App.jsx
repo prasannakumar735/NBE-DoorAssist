@@ -26,6 +26,7 @@ import MadeToSizeKits from "./pages/MadeToSizeKits";
 import StripHardware from "./pages/StripHardware";
 import ReplacementStrips from "./pages/ReplacementStrips";
 import RapidRollerDoors from "./containers/RapidRollerDoorsContainer";
+import PvcStripCurtains from "./containers/PvcStripCurtainsContainer";
 import DoorConfigurator from "./pages/DoorConfigurator";
 import ProductDetailContainer from "./containers/ProductDetailContainer";
 import RequestQuote from "./containers/QuoteContainer";
@@ -66,6 +67,8 @@ function AppRoutes() {
       <Route path="/rapid-roller-doors" element={withLayout(RapidRollerDoors)} />
       <Route path="/rapid-roller-doors/configure" element={withLayout(DoorConfigurator)} />
       <Route path="/rapid-roller-doors/:id" element={withLayout(ProductDetailContainer)} />
+      <Route path="/pvc-strip-curtains" element={withLayout(PvcStripCurtains)} />
+      <Route path="/pvc-strip-curtains/:id" element={withLayout(ProductDetailContainer)} />
       <Route path="/request-a-quote" element={withLayout(RequestQuote)} />
       <Route path="/checkout" element={withLayout(Checkout)} />
       <Route path="/order-confirmation" element={withLayout(OrderConfirmation)} />

@@ -10,7 +10,7 @@ import logoMarkLight from "@/OneDrive_3_4-26-2026/DRoooV 01_B+COLOR.png";
 const navLinks = [
   { name: "Products", href: "/products", mega: true },
   { name: "Rapid Roller Doors", href: "/rapid-roller-doors" },
-  { name: "PVC Strip Curtains", href: "/products?category=pvc_strip_curtains" },
+  { name: "PVC Strip Curtains", href: "/pvc-strip-curtains" },
   { name: "Solutions", href: "/industries" },
   { name: "Service & Support", href: "/service" },
   { name: "Resources", href: "/resources" },
@@ -21,8 +21,8 @@ const navLinks = [
 const footerLinks = {
   Products: [
     { name: "Rapid Roller Doors", href: "/rapid-roller-doors" },
-    { name: "PVC Strip Curtains", href: "/products?category=pvc_strip_curtains" },
-    { name: "Replacement PVC Strips", href: "/products?category=pvc_strip_curtains" },
+    { name: "PVC Strip Curtains", href: "/pvc-strip-curtains" },
+    { name: "Replacement PVC Strips", href: "/replacement-strips" },
     { name: "Compare Products", href: "/compare" },
   ],
   Solutions: [

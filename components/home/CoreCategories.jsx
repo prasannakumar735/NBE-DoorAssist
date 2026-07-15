@@ -69,7 +69,7 @@ export default function CoreCategories() {
           {/* PVC Strip Curtains — secondary panel */}
           <ScrollReveal className="lg:col-span-2" delay={0.1}>
             <a
-              href={createPageUrl("Products?category=pvc_strip_curtains")}
+              href="/pvc-strip-curtains"
               className="group relative block h-full min-h-[440px] rounded-2xl overflow-hidden bg-ink"
             >
               <img
@@ -96,7 +96,7 @@ export default function CoreCategories() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
                   <a
-                    href={createPageUrl("Products?category=pvc_strip_curtains")}
+                    href="/pvc-strip-curtains"
                     onClick={(e) => e.stopPropagation()}
                     className="text-sm font-semibold text-white/80 hover:text-white"
                   >

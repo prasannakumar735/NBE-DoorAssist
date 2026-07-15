@@ -24,6 +24,9 @@ export default function ProductDetailContainer() {
     initialData: null,
   });
 
+  const family = product?.category === "pvc_strip_curtains" ? "pvc" : "rapid-door";
+  const hubHref = family === "pvc" ? "/pvc-strip-curtains" : "/rapid-roller-doors";
+
   const relatedProducts = product
     ? allProducts.filter((p) => p.id !== product.id && p.category === product.category).slice(0, 3)
     : [];
@@ -38,10 +41,11 @@ export default function ProductDetailContainer() {
     <ProductDetail
       product={product}
       isLoading={isLoading}
-      backHref="/rapid-roller-doors"
+      family={family}
+      backHref={hubHref}
       renderLink={renderLink}
       relatedProducts={relatedProducts}
-      getRelatedHref={(p) => `/rapid-roller-doors/${p.id}`}
+      getRelatedHref={(p) => `${hubHref}/${p.id}`}
       uploadFile={uploadFile}
       submitEnquiry={submitEnquiry}
     />
