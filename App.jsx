@@ -9,6 +9,17 @@ import Layout from "./Layout.jsx";
 import PageNotFound from "./lib/PageNotFound";
 
 import Home from "./pages/Home";
+import Products from "./pages/Products";
+import ProductExperience from "./pages/ProductExperience";
+import QuoteBuilder from "./pages/QuoteBuilder";
+import Compare from "./pages/Compare";
+import Projects from "./pages/Projects";
+import Industries from "./pages/Industries";
+import Service from "./pages/Service";
+import Resources from "./pages/Resources";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+
 import CustomCurtainBuilder from "./pages/CustomCurtainBuilder";
 import StripRolls from "./pages/StripRolls";
 import MadeToSizeKits from "./pages/MadeToSizeKits";
@@ -21,113 +32,45 @@ import RequestQuote from "./containers/QuoteContainer";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 
+function withLayout(Page) {
+  return (
+    <Layout>
+      <Page />
+    </Layout>
+  );
+}
+
 function AppRoutes() {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <Layout>
-            <Home />
-          </Layout>
-        }
-      />
-      <Route
-        path="/custom-curtain-builder"
-        element={
-          <Layout>
-            <CustomCurtainBuilder />
-          </Layout>
-        }
-      />
-      <Route
-        path="/strip-rolls"
-        element={
-          <Layout>
-            <StripRolls />
-          </Layout>
-        }
-      />
-      <Route
-        path="/made-to-size-kits"
-        element={
-          <Layout>
-            <MadeToSizeKits />
-          </Layout>
-        }
-      />
-      <Route
-        path="/strip-hardware"
-        element={
-          <Layout>
-            <StripHardware />
-          </Layout>
-        }
-      />
-      <Route
-        path="/replacement-strips"
-        element={
-          <Layout>
-            <ReplacementStrips />
-          </Layout>
-        }
-      />
-      <Route
-        path="/rapid-roller-doors"
-        element={
-          <Layout>
-            <RapidRollerDoors />
-          </Layout>
-        }
-      />
-      <Route
-        path="/rapid-roller-doors/configure"
-        element={
-          <Layout>
-            <DoorConfigurator />
-          </Layout>
-        }
-      />
-      <Route
-        path="/rapid-roller-doors/:id"
-        element={
-          <Layout>
-            <ProductDetailContainer />
-          </Layout>
-        }
-      />
-      <Route
-        path="/request-a-quote"
-        element={
-          <Layout>
-            <RequestQuote />
-          </Layout>
-        }
-      />
-      <Route
-        path="/checkout"
-        element={
-          <Layout>
-            <Checkout />
-          </Layout>
-        }
-      />
-      <Route
-        path="/order-confirmation"
-        element={
-          <Layout>
-            <OrderConfirmation />
-          </Layout>
-        }
-      />
-      <Route
-        path="*"
-        element={
-          <Layout>
-            <PageNotFound />
-          </Layout>
-        }
-      />
+      <Route path="/" element={withLayout(Home)} />
+      <Route path="/home" element={withLayout(Home)} />
+      <Route path="/Home" element={withLayout(Home)} />
+      <Route path="/products" element={withLayout(Products)} />
+      <Route path="/product-experience" element={withLayout(ProductExperience)} />
+      <Route path="/quote-builder" element={withLayout(QuoteBuilder)} />
+      <Route path="/compare" element={withLayout(Compare)} />
+      <Route path="/projects" element={withLayout(Projects)} />
+      <Route path="/industries" element={withLayout(Industries)} />
+      <Route path="/service" element={withLayout(Service)} />
+      <Route path="/resources" element={withLayout(Resources)} />
+      <Route path="/about" element={withLayout(About)} />
+      <Route path="/contact" element={withLayout(Contact)} />
+
+      {/* Legacy strip / roller commerce routes */}
+      <Route path="/custom-curtain-builder" element={withLayout(CustomCurtainBuilder)} />
+      <Route path="/strip-rolls" element={withLayout(StripRolls)} />
+      <Route path="/made-to-size-kits" element={withLayout(MadeToSizeKits)} />
+      <Route path="/strip-hardware" element={withLayout(StripHardware)} />
+      <Route path="/replacement-strips" element={withLayout(ReplacementStrips)} />
+      <Route path="/rapid-roller-doors" element={withLayout(RapidRollerDoors)} />
+      <Route path="/rapid-roller-doors/configure" element={withLayout(DoorConfigurator)} />
+      <Route path="/rapid-roller-doors/:id" element={withLayout(ProductDetailContainer)} />
+      <Route path="/request-a-quote" element={withLayout(RequestQuote)} />
+      <Route path="/checkout" element={withLayout(Checkout)} />
+      <Route path="/order-confirmation" element={withLayout(OrderConfirmation)} />
+
+      <Route path="*" element={withLayout(PageNotFound)} />
     </Routes>
   );
 }

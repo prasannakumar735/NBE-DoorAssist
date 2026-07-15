@@ -6,9 +6,10 @@ import { Input } from "@/components/ui/input";
 import { base44 } from "@/api/base44Client";
 
 const quickPrompts = [
-  "What door suits my warehouse?",
-  "Do you install?",
-  "What is delivery time?",
+  "I need a quote for PVC strip curtains",
+  "I need a quote for a rapid roller door",
+  "What sizes are available?",
+  "Do you install in my area?",
 ];
 
 export default function ChatWidget() {
@@ -17,7 +18,7 @@ export default function ChatWidget() {
     {
       role: "assistant",
       content:
-        "Hi — I'm the Drooov Assistant. I can help with rapid roller doors, PVC strip curtains, and industrial door solutions. Ask a question below or use a quick prompt.",
+        "Hi — I’m the drooov assistant. Need help with PVC strip curtains or rapid roller doors? Tell me your opening size and location.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -76,8 +77,10 @@ export default function ChatWidget() {
                   <MessageCircle className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <div className="text-slate-900 font-semibold text-sm">Drooov Assistant</div>
-                  <div className="text-slate-500 text-xs">Quick questions</div>
+                  <div className="text-slate-900 font-semibold text-sm">drooov Support</div>
+                  <div className="text-emerald-400 text-xs flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Online
+                  </div>
                 </div>
               </div>
               <button onClick={() => setOpen(false)} className="text-slate-500 hover:text-slate-900">

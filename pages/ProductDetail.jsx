@@ -45,6 +45,8 @@ export default function ProductDetail({
   backHref,
   onBack,
   renderLink,
+  uploadFile,
+  submitEnquiry,
 }) {
   const [activeImage, setActiveImage] = useState(0);
   const [showQuote, setShowQuote] = useState(false);
@@ -325,8 +327,10 @@ export default function ProductDetail({
                   <button onClick={() => setShowQuote(false)} className="text-slate-500 hover:text-slate-900 text-sm">Close</button>
                 </div>
                 <QuoteForm
-                  prefill={{ item: product.title }}
-                  context={`product-detail:${product.id}`}
+                  productTitle={product.title}
+                  productId={product.id}
+                  uploadFile={uploadFile}
+                  submitEnquiry={submitEnquiry}
                 />
               </div>
             </motion.div>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Shield } from "lucide-react";
+import { ArrowUpRight, Ruler, Gauge, Shield } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const defaultCategoryLabels = {
@@ -10,6 +11,13 @@ const defaultCategoryLabels = {
   cold_storage: "Cold Storage",
   dock_door: "Dock Door",
   parts_accessories: "Parts & Accessories",
+};
+
+const defaultStockLabels = {
+  in_stock: { text: "In Stock", color: "bg-emerald-500/10 text-emerald-700 border-emerald-500/25" },
+  low_stock: { text: "Low Stock", color: "bg-amber-500/10 text-amber-700 border-amber-500/25" },
+  made_to_order: { text: "Made to Order", color: "bg-slate-500/10 text-slate-700 border-slate-500/25" },
+  out_of_stock: { text: "Out of Stock", color: "bg-red-500/10 text-red-700 border-red-500/25" },
 };
 
 function LinkWrapper({ href, onClick, className, children, renderLink }) {
@@ -44,94 +52,11 @@ export default function ProductCard({
   onPrimaryAction,
   renderLink,
   categoryLabels = defaultCategoryLabels,
-  /** Industrial catalog layout: image, title, description, orange VIEW DETAILS */
-  catalogMode = true,
-  showPrice = false,
-  ctaLabel,
+  stockLabels = defaultStockLabels,
 }) {
-  if (!catalogMode) {
-    return (
-      <LegacyProductCard
-        product={product}
-        detailHref={detailHref}
-        ctaHref={ctaHref}
-        onOpenDetail={onOpenDetail}
-        onPrimaryAction={onPrimaryAction}
-        renderLink={renderLink}
-        categoryLabels={categoryLabels}
-      />
-    );
-  }
-
-  const priceLabel =
-    showPrice && product.price != null
-      ? `${product.price_type === "from" ? "From " : ""}$${Number(product.price).toLocaleString("en-AU")}`
-      : null;
-
-  const buttonHref = ctaHref || detailHref;
-  const buttonLabel = ctaLabel || "VIEW DETAILS";
-
-  return (
-    <motion.article
-      whileHover={{ y: -3 }}
-      transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="group flex flex-col bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:border-slate-300 transition-all h-full"
-    >
-      <LinkWrapper href={detailHref} onClick={onOpenDetail} renderLink={renderLink} className="flex flex-col flex-1 min-h-0">
-        <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
-          {product.image_url ? (
-            <img
-              src={product.image_url}
-              alt={product.title || "Product"}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-slate-100">
-              <Shield className="w-14 h-14 text-slate-300" />
-            </div>
-          )}
-        </div>
-
-        <div className="p-5 flex flex-col flex-1">
-          <h3 className="text-base font-bold text-neutral-900 leading-snug tracking-tight group-hover:text-orange-600 transition-colors">
-            {product.title}
-          </h3>
-          {priceLabel && (
-            <p className="mt-2 text-lg font-black text-neutral-900 tracking-tight">{priceLabel}</p>
-          )}
-          <p className="mt-3 text-sm text-slate-600 leading-relaxed line-clamp-3 flex-1">
-            {product.short_description ||
-              product.description ||
-              `${categoryLabels[product.category] || "Industrial access"} — engineered for Australian sites. Request specifications and pricing.`}
-          </p>
-        </div>
-      </LinkWrapper>
-
-      <div className="px-5 pb-5 pt-0 mt-auto">
-        <LinkWrapper href={buttonHref} onClick={onPrimaryAction} renderLink={renderLink}>
-          <Button
-            className="w-full rounded-md bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold uppercase tracking-[0.12em] py-6 shadow-none"
-            type="button"
-          >
-            {buttonLabel}
-          </Button>
-        </LinkWrapper>
-      </div>
-    </motion.article>
-  );
-}
-
-/** Previous card layout — kept for catalogMode={false} if needed */
-function LegacyProductCard({
-  product,
-  detailHref,
-  ctaHref,
-  onOpenDetail,
-  onPrimaryAction,
-  renderLink,
-  categoryLabels,
-}) {
+  const stock = stockLabels[product?.stock_status] || stockLabels.in_stock;
   const ctaLabel = product?.is_part ? "View Details" : "Request Quote";
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -139,6 +64,7 @@ function LegacyProductCard({
       className="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 transition-colors shadow-sm hover:shadow-md"
     >
       <LinkWrapper href={detailHref} onClick={onOpenDetail} renderLink={renderLink}>
+        {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
           {product.image_url ? (
             <motion.img
@@ -153,17 +79,74 @@ function LegacyProductCard({
               <Shield className="w-16 h-16 text-slate-300" />
             </div>
           )}
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
+          
+          {/* Category badge */}
+          <div className="absolute top-4 left-4">
+            <Badge className="bg-white/80 backdrop-blur-sm text-slate-700 border-slate-200 text-xs">
+              {categoryLabels[product.category] || product.category}
+            </Badge>
+          </div>
+
+          {/* Quick view icon */}
+          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="w-10 h-10 rounded-full bg-orange-600 flex items-center justify-center shadow-sm">
+              <ArrowUpRight className="w-5 h-5 text-white" />
+            </div>
+          </div>
         </div>
+
+        {/* Content */}
         <div className="p-5">
-          <h3 className="text-lg font-bold text-slate-900">{product.title}</h3>
+          <div className="flex items-start justify-between gap-3 mb-3">
+            <div>
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-orange-700 transition-colors leading-tight">
+                {product.title}
+              </h3>
+              {product.sku && (
+                <span className="text-xs text-slate-500 font-mono mt-1 block">{product.sku}</span>
+              )}
+            </div>
+          </div>
+
+          {/* Quick specs */}
+          <div className="flex flex-wrap gap-3 mb-4 text-xs text-slate-600">
+            {product.width_mm && product.height_mm && (
+              <span className="flex items-center gap-1">
+                <Ruler className="w-3.5 h-3.5" />
+                {product.width_mm}×{product.height_mm}mm
+              </span>
+            )}
+            {product.rated_speed && (
+              <span className="flex items-center gap-1">
+                <Gauge className="w-3.5 h-3.5" />
+                {product.rated_speed}
+              </span>
+            )}
+          </div>
+
           {product.short_description && (
-            <p className="text-sm text-slate-600 mt-2 line-clamp-2">{product.short_description}</p>
+            <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+              {product.short_description}
+            </p>
           )}
+
+          {/* Quote + Status (no pricing) */}
+          <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <div className="text-sm font-semibold text-slate-800">
+              {product?.is_part ? "Enquire Now" : "Request Quote"}
+            </div>
+            <Badge variant="outline" className={`text-xs ${stock.color}`}>
+              {stock.text}
+            </Badge>
+          </div>
         </div>
       </LinkWrapper>
+
+      {/* Bottom CTA */}
       <div className="px-5 pb-5">
         <LinkWrapper href={ctaHref} onClick={onPrimaryAction} renderLink={renderLink}>
-          <Button className="w-full bg-slate-900 hover:bg-orange-600 text-white rounded-xl text-sm font-semibold">
+          <Button className="w-full bg-slate-900 hover:bg-orange-600 text-white transition-all rounded-xl text-sm font-semibold shadow-sm">
             {ctaLabel}
           </Button>
         </LinkWrapper>

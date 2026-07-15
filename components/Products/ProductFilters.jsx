@@ -32,56 +32,22 @@ const sortOptions = [
   { value: "title_az", label: "A → Z" },
 ];
 
-export default function ProductFilters({
-  filters,
-  onFilterChange,
-  resultCount,
-  showResultCount = true,
-}) {
+export default function ProductFilters({ filters, onFilterChange, resultCount }) {
   const [showAdvanced, setShowAdvanced] = useState(false);
   
   const activeFilters = Object.entries(filters).filter(
     ([key, val]) => val && val !== "all" && val !== "" && key !== "sort"
   );
-  // sector / performance shown in catalog row; still clearable here
 
   const labelFor = (key, val) => {
     if (key === "category") return categories.find(c => c.value === val)?.label || val;
     if (key === "material") return materials.find(m => m.value === val)?.label || val;
     if (key === "insulated") return val === "yes" ? "Insulated" : val === "no" ? "Non-insulated" : val;
-    if (key === "sector") {
-      const m = {
-        pharma: "Pharma & hygiene",
-        logistics: "Logistics",
-        cold_chain: "Cold chain",
-        manufacturing: "Manufacturing",
-        retail: "Retail",
-      };
-      return m[val] || val;
-    }
-    if (key === "performance") {
-      const m = {
-        high_cycle: "High-cycle / rapid",
-        climate: "Climate & insulation",
-        standard: "Standard",
-        dock: "Loading dock",
-      };
-      return m[val] || val;
-    }
     return val;
   };
 
   const update = (key, value) => onFilterChange({ ...filters, [key]: value });
-  const clearAll = () =>
-    onFilterChange({
-      search: "",
-      category: "all",
-      material: "all",
-      insulated: "all",
-      sort: "featured",
-      sector: "all",
-      performance: "all",
-    });
+  const clearAll = () => onFilterChange({ search: "", category: "all", material: "all", insulated: "all", sort: "featured" });
 
   return (
     <div className="space-y-4">
@@ -163,25 +129,23 @@ export default function ProductFilters({
       </AnimatePresence>
 
       {/* Active filters + count */}
-      <div className="flex items-center justify-between gap-4 flex-wrap">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 flex-wrap">
           {activeFilters.map(([key, val]) => (
             <Badge key={key} className="bg-orange-500/10 text-orange-700 border-orange-500/30 text-xs">
               {key}: {labelFor(key, val)}
-              <button type="button" onClick={() => update(key, key === "search" ? "" : "all")} className="ml-1.5">
+              <button onClick={() => update(key, key === "search" ? "" : "all")} className="ml-1.5">
                 <X className="w-3 h-3" />
               </button>
             </Badge>
           ))}
           {activeFilters.length > 0 && (
-            <button type="button" onClick={clearAll} className="text-xs text-slate-600 hover:text-orange-700 ml-2">
+            <button onClick={clearAll} className="text-xs text-slate-600 hover:text-orange-700 ml-2">
               Clear all
             </button>
           )}
         </div>
-        {showResultCount && (
-          <span className="text-sm text-slate-600">{resultCount} products</span>
-        )}
+        <span className="text-sm text-slate-600">{resultCount} products</span>
       </div>
     </div>
   );
