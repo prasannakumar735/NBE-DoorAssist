@@ -1,0 +1,6 @@
+# Never serve the lead log or config directly — leads.log contains customer PII.
+<FilesMatch "\.(log|md)$">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes

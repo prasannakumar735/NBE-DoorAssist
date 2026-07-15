@@ -1,0 +1,91 @@
+{
+  "name": "Enquiry",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Contact name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Contact email"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Contact phone"
+    },
+    "company": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "project_type": {
+      "type": "string",
+      "enum": [
+        "warehouse",
+        "factory",
+        "logistics",
+        "cold_storage",
+        "commercial",
+        "retail",
+        "other"
+      ],
+      "description": "Type of project"
+    },
+    "door_type": {
+      "type": "string",
+      "description": "Requested door type"
+    },
+    "width_mm": {
+      "type": "number",
+      "description": "Required width"
+    },
+    "height_mm": {
+      "type": "number",
+      "description": "Required height"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Number of doors needed"
+    },
+    "message": {
+      "type": "string",
+      "description": "Additional details"
+    },
+    "drawing_url": {
+      "type": "string",
+      "description": "Uploaded drawing file URL"
+    },
+    "urgency": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "urgent",
+        "emergency"
+      ],
+      "default": "standard"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "contacted",
+        "quoted",
+        "won",
+        "lost"
+      ],
+      "default": "new"
+    },
+    "product_id": {
+      "type": "string",
+      "description": "Related product ID if applicable"
+    },
+    "location": {
+      "type": "string",
+      "description": "Project location / state"
+    }
+  },
+  "required": [
+    "name",
+    "email"
+  ]
+}

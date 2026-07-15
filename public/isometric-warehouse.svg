@@ -1,0 +1,59 @@
+<svg width="840" height="560" viewBox="0 0 840 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g opacity="0.18">
+    <ellipse cx="420" cy="450" rx="220" ry="42" fill="#94A3B8"/>
+  </g>
+
+  <!-- Ground planes -->
+  <path d="M250 360L420 280L590 360L420 440L250 360Z" fill="#CBD5E1"/>
+  <path d="M300 360L420 300L540 360L420 420L300 360Z" fill="#94A3B8"/>
+
+  <!-- Warehouse shell -->
+  <path d="M350 245L470 195L560 245L440 295L350 245Z" fill="#334155"/>
+  <path d="M350 245V345L440 395V295L350 245Z" fill="#1E293B"/>
+  <path d="M440 295V395L560 345V245L440 295Z" fill="#475569"/>
+
+  <!-- Roof cap -->
+  <path d="M330 235L470 175L585 235L445 295L330 235Z" fill="#64748B"/>
+
+  <!-- Loading dock platform -->
+  <path d="M520 335L620 290L680 325L580 370L520 335Z" fill="#94A3B8"/>
+  <path d="M580 370V395L680 350V325L580 370Z" fill="#64748B"/>
+  <path d="M520 335V360L580 395V370L520 335Z" fill="#475569"/>
+
+  <!-- Rapid roller door highlight -->
+  <path d="M488 275L534 255L534 322L488 343V275Z" fill="#FC8347"/>
+  <path d="M488 275L534 255L511 245L466 265L488 275Z" fill="#E76E34"/>
+
+  <!-- PVC strip curtains bay -->
+  <path d="M390 313L430 294V344L390 363V313Z" fill="#93C5FD"/>
+  <g opacity="0.55">
+    <path d="M398 309L404 306V356L398 359V309Z" fill="#DBEAFE"/>
+    <path d="M408 304L414 301V351L408 354V304Z" fill="#DBEAFE"/>
+    <path d="M418 299L424 296V346L418 349V299Z" fill="#DBEAFE"/>
+  </g>
+
+  <!-- Cold storage side module -->
+  <path d="M300 322L360 295L400 318L340 345L300 322Z" fill="#BFDBFE"/>
+  <path d="M340 345V378L400 351V318L340 345Z" fill="#93C5FD"/>
+  <path d="M300 322V355L340 378V345L300 322Z" fill="#60A5FA"/>
+
+  <!-- Forklift -->
+  <path d="M560 365L585 353L608 365L584 377L560 365Z" fill="#334155"/>
+  <path d="M575 350L590 343L601 350L585 358L575 350Z" fill="#475569"/>
+  <rect x="596" y="342" width="6" height="34" transform="rotate(23 596 342)" fill="#334155"/>
+  <rect x="603" y="339" width="6" height="34" transform="rotate(23 603 339)" fill="#334155"/>
+  <circle cx="570" cy="377" r="7" fill="#1E293B"/>
+  <circle cx="596" cy="390" r="7" fill="#1E293B"/>
+
+  <!-- Pallets / workflow hints -->
+  <path d="M262 372L288 360L307 370L281 383L262 372Z" fill="#64748B"/>
+  <path d="M281 383V398L307 385V370L281 383Z" fill="#475569"/>
+  <path d="M262 372V387L281 398V383L262 372Z" fill="#334155"/>
+
+  <path d="M650 320L672 310L688 319L666 330L650 320Z" fill="#64748B"/>
+  <path d="M666 330V343L688 332V319L666 330Z" fill="#475569"/>
+  <path d="M650 320V333L666 343V330L650 320Z" fill="#334155"/>
+
+  <!-- Door path cue -->
+  <path d="M540 325C575 332 604 342 636 358" stroke="#FC8347" stroke-width="4" stroke-linecap="round" opacity="0.55"/>
+</svg>
