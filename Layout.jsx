@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ChatWidget from "@/components/chat/ChatWidget";
 import logoMarkLight from "@/OneDrive_3_4-26-2026/DRoooV 01_B+COLOR.png";
@@ -8,14 +9,23 @@ import logoMarkLight from "@/OneDrive_3_4-26-2026/DRoooV 01_B+COLOR.png";
 const navLinks = [
   { name: "Home", page: "Home" },
   { name: "Products", page: "Products" },
-  { name: "PVC Strip Curtains", page: "Products?category=pvc_strip_curtains" },
-  { name: "Rapid Roller Doors", page: "Products?category=rapid_roller" },
-  { name: "Get Quote", page: "Quote" },
+  { name: "Industries", page: "Industries" },
+  { name: "Service", page: "Service" },
+  { name: "About", page: "About" },
+  { name: "Contact", page: "Contact" },
 ];
 
-export default function Layout({ children, currentPageName }) {
+export default function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isHome = currentPageName === "Home";
+  const { pathname, search } = useLocation();
+  const isHome = pathname === "/";
+
+  const isActive = (page) => {
+    const href = createPageUrl(page);
+    const [hrefPath, hrefQuery] = href.split("?");
+    if (hrefQuery) return pathname === hrefPath && search === `?${hrefQuery}`;
+    return pathname === hrefPath;
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans scrollbar-thin">
@@ -23,8 +33,8 @@ export default function Layout({ children, currentPageName }) {
       {/* Navbar */}
       <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         isHome
-          ? "bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-sm"
-          : "bg-white border-b border-slate-200 shadow-sm"
+          ? "bg-white/95 backdrop-blur-xl border-b border-line shadow-sm"
+          : "bg-white border-b border-line shadow-sm"
       } z-50 isolate`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
@@ -44,9 +54,9 @@ export default function Layout({ children, currentPageName }) {
                   key={link.page}
                   href={createPageUrl(link.page)}
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
-                    currentPageName === link.page
+                    isActive(link.page)
                       ? "text-brand bg-brand/10"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                      : "text-on-surface-variant hover:text-ink hover:bg-surface-low"
                   }`}
                 >
                   {link.name}
@@ -69,7 +79,7 @@ export default function Layout({ children, currentPageName }) {
               {/* Mobile menu toggle */}
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden text-slate-800 hover:text-slate-900 p-2"
+                className="md:hidden text-ink hover:text-brand p-2"
               >
                 {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -84,7 +94,7 @@ export default function Layout({ children, currentPageName }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-slate-200 overflow-hidden"
+              className="md:hidden bg-white border-t border-line overflow-hidden"
             >
               <div className="px-6 py-4 space-y-1">
                 {navLinks.map(link => (
@@ -93,9 +103,9 @@ export default function Layout({ children, currentPageName }) {
                     href={createPageUrl(link.page)}
                     onClick={() => setMobileOpen(false)}
                     className={`block px-4 py-3 rounded-xl text-sm font-medium ${
-                      currentPageName === link.page
+                      isActive(link.page)
                         ? "text-brand bg-brand/10"
-                        : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                        : "text-on-surface-variant hover:text-ink hover:bg-surface-low"
                     }`}
                   >
                     {link.name}
@@ -118,7 +128,7 @@ export default function Layout({ children, currentPageName }) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200">
+      <footer className="bg-white border-t border-line">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
@@ -129,30 +139,30 @@ export default function Layout({ children, currentPageName }) {
                   className="h-14 w-14 rounded-2xl object-contain"
                 />
               </div>
-              <p className="text-slate-600 text-sm leading-relaxed max-w-sm">
+              <p className="text-on-surface-variant text-sm leading-relaxed max-w-sm">
                 Australia's specialist supplier of industrial rapid roller doors. Factory direct pricing, nationwide delivery, and professional installation partners.
               </p>
             </div>
             <div>
-              <h4 className="text-slate-900 font-bold text-sm mb-4">Quick Links</h4>
+              <h4 className="text-ink font-bold text-sm mb-4">Quick Links</h4>
               <div className="space-y-2">
                 {navLinks.map(link => (
-                  <a key={link.page} href={createPageUrl(link.page)} className="block text-sm text-slate-600 hover:text-brand transition-colors">
+                  <a key={link.page} href={createPageUrl(link.page)} className="block text-sm text-on-surface-variant hover:text-brand transition-colors">
                     {link.name}
                   </a>
                 ))}
               </div>
             </div>
             <div>
-              <h4 className="text-slate-900 font-bold text-sm mb-4">Contact</h4>
-              <div className="space-y-2 text-sm text-slate-600">
+              <h4 className="text-ink font-bold text-sm mb-4">Contact</h4>
+              <div className="space-y-2 text-sm text-on-surface-variant">
                 <p>support@drooov.com.au</p>
                 <p>1300 DROOOV</p>
                 <p>Australia-wide</p>
               </div>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-slate-200 text-center text-xs text-slate-500">
+          <div className="mt-12 pt-8 border-t border-line text-center text-xs text-on-surface-variant">
             © 2026 drooov. All rights reserved. Industrial Rapid Roller Doors — Engineered for Australia.
           </div>
         </div>
