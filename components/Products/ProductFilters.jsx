@@ -5,11 +5,11 @@ import { Badge } from "@/components/ui/badge";
 
 const categories = [
   { value: "all", label: "All Categories" },
+  { value: "rapid_roller", label: "Rapid Roller Doors" },
   { value: "pvc_strip_curtains", label: "PVC Strip Curtains" },
-  { value: "rapid_roller", label: "Rapid Roller" },
+  { value: "cold_storage", label: "Cold Storage Rapid Doors" },
   { value: "high_speed", label: "High Speed" },
   { value: "insulated", label: "Insulated" },
-  { value: "cold_storage", label: "Cold Storage" },
   { value: "dock_door", label: "Dock Door" },
   { value: "parts_accessories", label: "Parts & Accessories" },
 ];

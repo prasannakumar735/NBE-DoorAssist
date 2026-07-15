@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 import ScrollReveal from "@/components/motion/ScrollReveal";
 import QuoteForm from "@/components/quote/QuoteForm";
-import ProductCard, { LinkWrapper, defaultCategoryLabels as categoryLabels } from "@/components/products/ProductCard";
+import ProductCard, { LinkWrapper, defaultCategoryLabels as categoryLabels } from "@/components/Products/ProductCard";
 import { createPageUrl } from "@/utils";
 
 const trustBadges = [

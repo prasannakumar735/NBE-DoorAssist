@@ -9,7 +9,7 @@ import Layout from "./Layout.jsx";
 import PageNotFound from "./lib/PageNotFound";
 
 import Home from "./pages/Home";
-import Products from "./pages/Products";
+import ProductsContainer from "./containers/ProductsContainer";
 import ProductExperience from "./pages/ProductExperience";
 import QuoteBuilder from "./pages/QuoteBuilder";
 import Compare from "./pages/Compare";
@@ -46,7 +46,7 @@ function AppRoutes() {
       <Route path="/" element={withLayout(Home)} />
       <Route path="/home" element={withLayout(Home)} />
       <Route path="/Home" element={withLayout(Home)} />
-      <Route path="/products" element={withLayout(Products)} />
+      <Route path="/products" element={withLayout(ProductsContainer)} />
       <Route path="/product-experience" element={withLayout(ProductExperience)} />
       <Route path="/quote-builder" element={withLayout(QuoteBuilder)} />
       <Route path="/compare" element={withLayout(Compare)} />

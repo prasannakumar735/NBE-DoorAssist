@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { base44 } from "@/api/base44Client";
 import HeroSection from "@/components/home/HeroSection";
+import CoreCategories from "@/components/home/CoreCategories";
+import ProductFinder from "@/components/home/ProductFinder";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import HowItWorks from "@/components/home/HowItWorks";
 import TrustSection from "@/components/home/TrustSection";
@@ -16,10 +18,12 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <CoreCategories />
+      <ProductFinder />
       <FeaturedProducts products={products} />
-      <HowItWorks />
       <TrustSection />
       <SupportSection />
+      <HowItWorks />
       <CTABanner />
     </>
   );

@@ -1,32 +1,27 @@
 import { motion } from "framer-motion";
-import { Settings2, Ruler, FileText, Truck, Wrench } from "lucide-react";
+import { Search, ListChecks, SlidersHorizontal, LifeBuoy } from "lucide-react";
 import ScrollReveal from "../motion/ScrollReveal";
 
 const steps = [
   {
-    icon: Settings2,
-    title: "Choose Model",
-    description: "Browse our range of rapid roller doors designed for Australian conditions.",
+    icon: Search,
+    title: "Explore",
+    description: "Browse Rapid Roller Doors and PVC Strip Curtain solutions.",
   },
   {
-    icon: Ruler,
-    title: "Customise Size & Specs",
-    description: "Select custom widths, heights, materials and insulation options.",
+    icon: ListChecks,
+    title: "Compare",
+    description: "Review product applications, features and technical information.",
   },
   {
-    icon: FileText,
-    title: "Quote & Purchase",
-    description: "Receive competitive pricing direct from our factory partners.",
+    icon: SlidersHorizontal,
+    title: "Configure or Enquire",
+    description: "Configure a PVC curtain or submit your industrial door requirements.",
   },
   {
-    icon: Truck,
-    title: "Ship Australia-wide",
-    description: "Fast delivery across all states with express options available.",
-  },
-  {
-    icon: Wrench,
-    title: "Install & Support",
-    description: "Local installation partners plus 24/7 emergency breakdown support.",
+    icon: LifeBuoy,
+    title: "Get Product Support",
+    description: "Our team reviews your application and assists with the next step.",
   },
 ];
 
@@ -47,7 +42,7 @@ export default function HowItWorks() {
               The Process
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight font-heading">
-              How It Works
+              How Drooov Works
             </h2>
           </div>
         </ScrollReveal>
@@ -65,7 +60,7 @@ export default function HowItWorks() {
               transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
             />
 
-            <div className="grid grid-cols-5 gap-8">
+            <div className="grid grid-cols-4 gap-8">
               {steps.map((step, i) => (
                 <ScrollReveal key={i} delay={i * 0.15}>
                   <div className="text-center">

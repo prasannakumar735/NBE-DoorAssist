@@ -35,3 +35,21 @@ export function submitQuoteRequest(payload) {
 export function submitOrderRequest(payload) {
   return postJson("order.php", payload);
 }
+
+/**
+ * Reads a File into the { base64, filename, type } shape quote.php expects
+ * as an email attachment. There is no separate file-storage endpoint — the
+ * file travels inline in the same JSON POST as the enquiry.
+ */
+export function fileToAttachment(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = String(reader.result || "");
+      const base64 = result.slice(result.indexOf(",") + 1);
+      resolve({ base64, filename: file.name, type: file.type || "application/octet-stream" });
+    };
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}

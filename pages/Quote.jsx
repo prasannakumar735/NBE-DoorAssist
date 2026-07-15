@@ -2,7 +2,7 @@ import ScrollReveal from "@/components/motion/ScrollReveal";
 import QuoteForm from "@/components/quote/QuoteForm";
 import { Clock, ShieldCheck, Wrench } from "lucide-react";
 
-export default function Quote({ product, productId = "", uploadFile, submitEnquiry }) {
+export default function Quote({ product, productId = "", prefill, uploadFile, submitEnquiry }) {
 
   return (
     <div className="min-h-screen bg-paper">
@@ -29,6 +29,7 @@ export default function Quote({ product, productId = "", uploadFile, submitEnqui
               <QuoteForm
                 productTitle={product?.title || ""}
                 productId={productId || ""}
+                initialMessage={prefill?.message || ""}
                 uploadFile={uploadFile}
                 submitEnquiry={submitEnquiry}
               />

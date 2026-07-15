@@ -1,14 +1,14 @@
-import { MapPin, Phone, Wrench, Package } from "lucide-react";
+import { ClipboardCheck, Wrench, Settings2, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { createPageUrl } from "@/utils";
 import ScrollReveal from "../motion/ScrollReveal";
 import { motion } from "framer-motion";
 
 const features = [
-  { icon: MapPin, title: "Australia-wide Partners", desc: "Certified installers in every state and territory" },
-  { icon: Phone, title: "24/7 Emergency Support", desc: "Breakdown assistance available around the clock" },
-  { icon: Wrench, title: "Spare Parts Available", desc: "Genuine replacement parts shipped express" },
-  { icon: Package, title: "Maintenance Programs", desc: "Preventative maintenance to maximise door lifespan" },
+  { icon: ClipboardCheck, title: "Rapid Door Inspections", desc: "Scheduled inspections to keep doors compliant and reliable" },
+  { icon: Settings2, title: "Preventive Maintenance", desc: "Maintenance programs to maximise door lifespan" },
+  { icon: Wrench, title: "Door Repairs", desc: "Repairs and replacement components for existing installations" },
+  { icon: Layers, title: "Replacement PVC Strips", desc: "PVC curtain replacement and made-to-size strip supply" },
 ];
 
 export default function SupportSection() {
@@ -26,19 +26,26 @@ export default function SupportSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <ScrollReveal direction="left">
             <span className="text-brand text-sm font-semibold tracking-widest uppercase mb-4 block">
-              Installation & Support
+              Service &amp; Support
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 font-heading">
-              We've Got You Covered
+              Support for Rapid Doors &amp; PVC Strip Curtains
             </h2>
             <p className="text-slate-400 text-lg mb-10 leading-relaxed">
-              From installation to ongoing maintenance, our national network of certified partners ensures your doors perform at their best, every day.
+              From industrial door servicing to replacement PVC strips, Drooov supports products throughout their operating life.
             </p>
-            <a href={createPageUrl("Quote")}>
-              <Button size="lg" className="bg-brand hover:bg-brandDark text-white px-8 py-6 rounded-xl font-semibold">
-                Get Support
-              </Button>
-            </a>
+            <div className="flex flex-wrap gap-4">
+              <a href={createPageUrl("Service")}>
+                <Button size="lg" className="bg-brand hover:bg-brandDark text-white px-8 py-6 rounded-xl font-semibold">
+                  Explore Service &amp; Support
+                </Button>
+              </a>
+              <a href={createPageUrl("Service")}>
+                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-6 rounded-xl font-semibold">
+                  Book a Service
+                </Button>
+              </a>
+            </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

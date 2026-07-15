@@ -1,10 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
+import { useQuoteEnquiry } from "@/lib/useQuoteEnquiry";
 import ProductDetail from "@/pages/ProductDetail";
 
 export default function ProductDetailContainer() {
   const { id: productId } = useParams();
+  const { uploadFile, submitEnquiry } = useQuoteEnquiry(`product-detail:${productId}`);
 
   const { data: allProducts = [] } = useQuery({
     queryKey: ["products"],
@@ -40,6 +42,8 @@ export default function ProductDetailContainer() {
       renderLink={renderLink}
       relatedProducts={relatedProducts}
       getRelatedHref={(p) => `/rapid-roller-doors/${p.id}`}
+      uploadFile={uploadFile}
+      submitEnquiry={submitEnquiry}
     />
   );
 }

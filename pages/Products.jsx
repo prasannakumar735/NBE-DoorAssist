@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { ChevronRight, Loader2 } from "lucide-react";
-import ProductCard from "@/components/products/ProductCard";
-import ProductFilters from "@/components/products/ProductFilters";
+import ProductCard from "@/components/Products/ProductCard";
+import ProductFilters from "@/components/Products/ProductFilters";
 import ScrollReveal from "@/components/motion/ScrollReveal";
 import { createPageUrl } from "@/utils";
 
@@ -65,11 +65,37 @@ export default function Products({
             Browse & compare
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight mb-2 font-heading">
-            Products
+            Industrial Door &amp; PVC Strip Curtain Products
           </h1>
           <p className="text-on-surface-variant text-lg max-w-2xl">
-            Filter by product family, material and features, then request a tailored quote when you’re ready.
+            Explore rapid roller doors and PVC strip curtain solutions for industrial, cold storage, warehouse and food processing applications.
           </p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <a
+            href="/rapid-roller-doors"
+            className="group relative rounded-2xl overflow-hidden bg-ink min-h-[180px] flex items-end p-6"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+            <div className="relative">
+              <h2 className="text-xl font-bold text-white font-heading">Rapid Roller Doors</h2>
+              <p className="text-white/75 text-sm mt-1">High-speed industrial doors for frequent access</p>
+            </div>
+          </a>
+          <button
+            type="button"
+            onClick={() => setFilters((f) => ({ ...f, category: "pvc_strip_curtains" }))}
+            className="group relative rounded-2xl overflow-hidden bg-ink min-h-[180px] flex items-end p-6 text-left"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+            <div className="relative">
+              <h2 className="text-xl font-bold text-white font-heading">PVC Strip Curtains</h2>
+              <p className="text-white/75 text-sm mt-1">Flexible PVC separation for cool rooms &amp; warehouses</p>
+            </div>
+          </button>
         </div>
       </div>
 

@@ -7,12 +7,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Send, Upload, CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function QuoteForm({ productTitle, productId, uploadFile, submitEnquiry }) {
+export default function QuoteForm({ productTitle, productId, initialMessage, uploadFile, submitEnquiry }) {
   const [form, setForm] = useState({
     name: "", email: "", phone: "", company: "",
-    project_type: "", door_type: productTitle || "", 
+    project_type: "", door_type: productTitle || "",
     width_mm: "", height_mm: "", quantity: 1,
-    message: "", urgency: "standard", location: "",
+    message: initialMessage || "", urgency: "standard", location: "",
     product_id: productId || "",
   });
   const [submitting, setSubmitting] = useState(false);
