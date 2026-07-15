@@ -76,7 +76,7 @@ export default function QuoteForm({ productTitle, productId, uploadFile, submitE
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 flex items-start gap-3">
-        <ShieldCheck className="w-5 h-5 text-orange-600 mt-0.5" />
+        <ShieldCheck className="w-5 h-5 text-brand mt-0.5" />
         <div>
           <div className="font-semibold text-slate-900">Fast turnaround</div>
           <div className="text-slate-600">
@@ -90,22 +90,22 @@ export default function QuoteForm({ productTitle, productId, uploadFile, submitE
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Full Name *</Label>
           <Input required value={form.name} onChange={e => handleChange("name", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="John Smith" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="John Smith" />
         </div>
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Email *</Label>
           <Input required type="email" value={form.email} onChange={e => handleChange("email", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="john@company.com" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="john@company.com" />
         </div>
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Phone</Label>
           <Input value={form.phone} onChange={e => handleChange("phone", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="04XX XXX XXX" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="04XX XXX XXX" />
         </div>
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Company</Label>
           <Input value={form.company} onChange={e => handleChange("company", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="Company name" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="Company name" />
         </div>
       </div>
 
@@ -127,7 +127,7 @@ export default function QuoteForm({ productTitle, productId, uploadFile, submitE
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Location / State</Label>
           <Input value={form.location} onChange={e => handleChange("location", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="e.g. Sydney, NSW" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="e.g. Sydney, NSW" />
         </div>
       </div>
 
@@ -136,17 +136,17 @@ export default function QuoteForm({ productTitle, productId, uploadFile, submitE
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Product / Model</Label>
           <Input value={form.door_type} onChange={e => handleChange("door_type", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="e.g. Rapid Roller 3000 or PVC strip curtains" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="e.g. Rapid Roller 3000 or PVC strip curtains" />
         </div>
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Width (mm)</Label>
           <Input type="number" value={form.width_mm} onChange={e => handleChange("width_mm", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="3000" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="3000" />
         </div>
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Height (mm)</Label>
           <Input type="number" value={form.height_mm} onChange={e => handleChange("height_mm", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" placeholder="4000" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" placeholder="4000" />
         </div>
       </div>
 
@@ -154,7 +154,7 @@ export default function QuoteForm({ productTitle, productId, uploadFile, submitE
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Quantity</Label>
           <Input type="number" min="1" value={form.quantity} onChange={e => handleChange("quantity", e.target.value)}
-            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-orange-600 shadow-sm" />
+            className="bg-white border-slate-200 text-slate-900 rounded-xl h-11 focus:border-brand shadow-sm" />
         </div>
         <div className="space-y-2">
           <Label className="text-slate-800 text-sm">Urgency</Label>
@@ -174,7 +174,7 @@ export default function QuoteForm({ productTitle, productId, uploadFile, submitE
       {/* Upload */}
       <div className="space-y-2">
         <Label className="text-slate-800 text-sm">Upload Drawings (optional)</Label>
-        <label className={`flex items-center gap-3 p-4 border-2 border-dashed border-slate-200 bg-slate-50 rounded-xl transition-colors ${typeof uploadFile === "function" ? "cursor-pointer hover:border-orange-400" : "cursor-not-allowed opacity-70"}`}>
+        <label className={`flex items-center gap-3 p-4 border-2 border-dashed border-slate-200 bg-slate-50 rounded-xl transition-colors ${typeof uploadFile === "function" ? "cursor-pointer hover:border-brandLight" : "cursor-not-allowed opacity-70"}`}>
           <Upload className="w-5 h-5 text-slate-500" />
           <span className="text-sm text-slate-700">
             {uploading ? "Uploading..." : drawingUrl ? "File uploaded ✓" : "Click to upload drawings or plans"}
@@ -187,14 +187,14 @@ export default function QuoteForm({ productTitle, productId, uploadFile, submitE
       <div className="space-y-2">
         <Label className="text-slate-800 text-sm">Additional Details</Label>
         <Textarea value={form.message} onChange={e => handleChange("message", e.target.value)}
-          className="bg-white border-slate-200 text-slate-900 rounded-xl min-h-[100px] focus:border-orange-600 shadow-sm"
+          className="bg-white border-slate-200 text-slate-900 rounded-xl min-h-[100px] focus:border-brand shadow-sm"
           placeholder="Tell us about your project requirements..." />
       </div>
 
       {submitError ? <p className="text-sm text-red-400">{submitError}</p> : null}
 
       <Button type="submit" disabled={submitting}
-        className="w-full bg-orange-600 hover:bg-orange-700 text-white py-6 rounded-xl text-base font-bold shadow-sm">
+        className="w-full bg-brand hover:bg-brandDark text-white py-6 rounded-xl text-base font-bold shadow-sm">
         {submitting ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : <Send className="w-5 h-5 mr-2" />}
         {submitting ? "Submitting..." : "Get My Custom Quote"}
       </Button>

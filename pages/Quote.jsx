@@ -9,10 +9,10 @@ export default function Quote({ product, productId = "", uploadFile, submitEnqui
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-6 py-16 text-center">
           <ScrollReveal>
-            <span className="text-orange-600 text-sm font-semibold tracking-widest uppercase mb-4 block">
+            <span className="text-brand text-sm font-semibold tracking-widest uppercase mb-4 block">
               Get a Custom Quote
             </span>
-            <h1 className="text-4xl md:text-5xl font-black text-ink tracking-tight mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-ink tracking-tight mb-4 font-heading">
               Let's Build Your Solution
             </h1>
             <p className="text-slate-700 text-lg max-w-2xl mx-auto">
@@ -38,22 +38,22 @@ export default function Quote({ product, productId = "", uploadFile, submitEnqui
           <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-28">
             <ScrollReveal>
               <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                <h2 className="text-slate-900 font-bold text-lg tracking-tight">What happens next</h2>
+                <h2 className="text-ink font-bold text-lg tracking-tight">What happens next</h2>
                 <ol className="mt-4 space-y-3 text-sm text-slate-700">
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-orange-500/10 text-orange-700 font-semibold">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand/10 text-brand font-semibold">
                       1
                     </span>
                     <span>We review your sizes, site details and preferred product family.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-orange-500/10 text-orange-700 font-semibold">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand/10 text-brand font-semibold">
                       2
                     </span>
                     <span>We recommend options and confirm lead times.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-orange-500/10 text-orange-700 font-semibold">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-brand/10 text-brand font-semibold">
                       3
                     </span>
                     <span>You get a clear itemised quote — with delivery and install partner options where needed.</span>
@@ -71,7 +71,7 @@ export default function Quote({ product, productId = "", uploadFile, submitEnqui
                 ].map((item) => (
                   <div key={item.title} className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm">
                     <div className="flex items-center gap-3">
-                      <item.icon className="w-5 h-5 text-orange-600" />
+                      <item.icon className="w-5 h-5 text-brand" />
                       <div className="text-slate-900 font-semibold">{item.title}</div>
                     </div>
                     <div className="text-sm text-slate-600 mt-2 leading-relaxed">{item.desc}</div>
