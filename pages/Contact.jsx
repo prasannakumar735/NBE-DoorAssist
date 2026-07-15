@@ -58,7 +58,7 @@ export default function Contact() {
             </p>
             <button
               type="submit"
-              className="w-full py-4 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.16em] uppercase hover:bg-accent transition-colors"
+              className="w-full py-4 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.16em] uppercase hover:bg-brand transition-colors"
             >
               Submit
             </button>
@@ -77,7 +77,7 @@ export default function Contact() {
             <div className="space-y-3 text-sm">
               <p className="font-display font-bold text-lg">DROOOV</p>
               <p className="text-muted">1300 DROOOV · Australia-wide</p>
-              <a href="mailto:support@drooov.com.au" className="text-accent hover:underline">
+              <a href="mailto:support@drooov.com.au" className="text-brand hover:underline">
                 support@drooov.com.au
               </a>
               <div className="pt-4 flex flex-wrap gap-3">

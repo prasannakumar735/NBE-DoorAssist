@@ -4,11 +4,30 @@ export default {
   content: ["./index.html", "./{pages,components,containers,src}/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Roboto", "system-ui", "sans-serif"],
+        heading: ["'Roboto Condensed'", "system-ui", "sans-serif"],
+        display: ["'Roboto Condensed'", "system-ui", "sans-serif"],
+        "mono-spec": ["'Roboto Mono'", "monospace"],
+      },
       colors: {
-        brand: "#3E6AAE",
-        brandDark: "#2F5590",
-        ink: "#051125",
-        paper: "#FBF9F8",
+        brand: "#e0670f",
+        brandDark: "#b8500a",
+        brandLight: "#f5921f",
+        ink: "#1c1a17",
+        paper: "#ffffff",
+        "surface-low": "#f7f5f2",
+        "surface-sunken": "#efece5",
+        "on-surface-variant": "#5b5750",
+        line: "#e4e1d9",
+        steel: "#4a4e45",
+        // Hero-only palette: HeroSection.jsx is intentionally kept on the
+        // site's previous blue/Inter look while the rest of the site moves
+        // to the orange/Roboto system above. Do not repoint these.
+        heroBrand: "#3E6AAE",
+        heroBrandDark: "#2F5590",
+        heroInk: "#051125",
+        heroPaper: "#FBF9F8",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

@@ -40,7 +40,7 @@ Dark hero sections use `bg-slate-900` with `text-slate-300` body copy and glassm
 
 1. **ScrollReveal** ([components/motion/ScrollReveal.jsx](components/motion/ScrollReveal.jsx)) — wrap every card/section child. Fades in + slides 40px, `duration: 0.7`, ease `[0.22, 1, 0.36, 1]`, `viewport={{ once: true }}`. Stagger grids with `delay={i * 0.04–0.1}` capped ~0.24s.
 2. **Hero entrance** — staggered `initial={{ opacity: 0, y: 12–18 }}` → `animate` with delays 0, 0.08, 0.16, 0.24; panel scales in from 0.96.
-3. **Animated images (floating loop)** — the signature treatment, see [components/ui/WarehouseAnimation.jsx](components/ui/WarehouseAnimation.jsx):
+3. **Animated images (floating loop)** — the signature treatment (the original `components/ui/WarehouseAnimation.jsx` reference implementation was removed from the tree; recreate this pattern directly where needed, e.g. the isometric illustration in [components/home/HeroSection.jsx](components/home/HeroSection.jsx)):
    ```jsx
    <motion.img
      src="/isometric-warehouse.png"

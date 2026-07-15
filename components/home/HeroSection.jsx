@@ -5,12 +5,12 @@ import { createPageUrl } from "@/utils";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[86vh] flex items-center overflow-hidden bg-paper">
+    <section className="relative min-h-[86vh] flex items-center overflow-hidden bg-heroPaper [font-family:'Inter',system-ui,sans-serif]">
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_20%_20%,rgba(252,131,71,0.22),transparent_60%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(900px_500px_at_90%_30%,rgba(14,116,144,0.10),transparent_55%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-paper via-paper to-paper/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-heroPaper via-heroPaper to-heroPaper/90" />
       </div>
 
       {/* Animated grid lines */}
@@ -23,7 +23,7 @@ export default function HeroSection() {
 
       {/* Accent line */}
       <motion.div
-        className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-brand via-brand/30 to-transparent"
+        className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-heroBrand via-heroBrand/30 to-transparent"
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
         transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
@@ -38,10 +38,10 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-brand/30 bg-brand/10 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-heroBrand/30 bg-heroBrand/10 mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-            <span className="text-brand text-sm font-medium tracking-wide uppercase">
+            <span className="w-2 h-2 rounded-full bg-heroBrand animate-pulse" />
+            <span className="text-heroBrand text-sm font-medium tracking-wide uppercase">
               Australia‑wide supply & install partners
             </span>
           </motion.div>
@@ -51,11 +51,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-6 [font-family:var(--font-heading)]"
+            className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.9] tracking-tight mb-6 [font-family:'Space_Grotesk',system-ui,sans-serif]"
           >
-            <span className="text-ink">PVC Strip Curtains</span>
+            <span className="text-heroInk">PVC Strip Curtains</span>
             <br />
-            <span className="text-brand">&amp; Rapid Roller Doors</span>
+            <span className="text-heroBrand">&amp; Rapid Roller Doors</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -84,13 +84,13 @@ export default function HeroSection() {
             className="flex flex-wrap gap-4"
           >
             <a href={createPageUrl("Products")}>
-              <Button size="lg" className="bg-brand hover:bg-brandDark text-white px-8 py-6 text-base font-semibold rounded-xl group shadow-sm">
+              <Button size="lg" className="bg-heroBrand hover:bg-heroBrandDark text-white px-8 py-6 text-base font-semibold rounded-xl group shadow-sm">
                 Browse Products
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </a>
             <a href={createPageUrl("Quote")}>
-              <Button size="lg" variant="outline" className="border-slate-300 bg-white/60 text-ink hover:bg-white px-8 py-6 text-base font-semibold rounded-xl shadow-sm">
+              <Button size="lg" variant="outline" className="border-slate-300 bg-white/60 text-heroInk hover:bg-white px-8 py-6 text-base font-semibold rounded-xl shadow-sm">
                 <MessageSquare className="mr-2 w-5 h-5 text-slate-700" />
                 Get Quote
               </Button>
@@ -109,16 +109,16 @@ export default function HeroSection() {
               className="group rounded-2xl border border-slate-200 bg-white/70 hover:bg-white transition-colors p-5 shadow-sm"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center">
-                  <Layers className="w-5 h-5 text-brand" />
+                <div className="w-10 h-10 rounded-xl bg-heroBrand/10 flex items-center justify-center">
+                  <Layers className="w-5 h-5 text-heroBrand" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-ink">PVC Strip Curtains</div>
+                  <div className="text-sm font-semibold text-heroInk">PVC Strip Curtains</div>
                   <p className="text-sm text-slate-600 mt-1 leading-relaxed">
                     Heavy‑duty industrial curtain systems for doorways, cool rooms and process areas.
                   </p>
                 </div>
-                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-brand group-hover:translate-x-0.5 transition-all" />
+                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-heroBrand group-hover:translate-x-0.5 transition-all" />
               </div>
             </a>
             <a
@@ -126,16 +126,16 @@ export default function HeroSection() {
               className="group rounded-2xl border border-slate-200 bg-white/70 hover:bg-white transition-colors p-5 shadow-sm"
             >
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center">
-                  <DoorOpen className="w-5 h-5 text-brand" />
+                <div className="w-10 h-10 rounded-xl bg-heroBrand/10 flex items-center justify-center">
+                  <DoorOpen className="w-5 h-5 text-heroBrand" />
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-semibold text-ink">Rapid Roller Doors</div>
+                  <div className="text-sm font-semibold text-heroInk">Rapid Roller Doors</div>
                   <p className="text-sm text-slate-600 mt-1 leading-relaxed">
                     High‑cycle, high‑speed doors for warehouses, logistics and cold storage.
                   </p>
                 </div>
-                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-brand group-hover:translate-x-0.5 transition-all" />
+                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-heroBrand group-hover:translate-x-0.5 transition-all" />
               </div>
             </a>
           </motion.div>
@@ -153,7 +153,7 @@ export default function HeroSection() {
               { value: "24/7", label: "Support" },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-2xl md:text-3xl font-bold text-ink">{stat.value}</div>
+                <div className="text-2xl md:text-3xl font-bold text-heroInk">{stat.value}</div>
                 <div className="text-sm text-slate-500 mt-1">{stat.label}</div>
               </div>
             ))}
@@ -174,7 +174,7 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-paper to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-heroPaper to-transparent" />
     </section>
   );
 }

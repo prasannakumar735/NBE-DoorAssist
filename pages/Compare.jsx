@@ -55,7 +55,7 @@ export default function Compare() {
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
             to="/quote-builder"
-            className="px-8 py-4 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.16em] uppercase hover:bg-accent transition-colors"
+            className="px-8 py-4 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.16em] uppercase hover:bg-brand transition-colors"
           >
             Request Quote
           </Link>

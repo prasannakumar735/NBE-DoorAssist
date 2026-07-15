@@ -99,7 +99,7 @@ export default function QuoteBuilder() {
         </div>
 
         <div className="mt-10 bg-white border border-line p-6 md:p-10 min-h-[360px]">
-          <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-accent">
+          <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-brand">
             Step {step + 1} — {STEPS[step]}
           </p>
 
@@ -225,7 +225,7 @@ export default function QuoteBuilder() {
                 className="sr-only"
                 onChange={(e) => setForm({ ...form, drawingName: e.target.files?.[0]?.name || "" })}
               />
-              {form.drawingName && <span className="mt-4 text-sm text-accent">{form.drawingName}</span>}
+              {form.drawingName && <span className="mt-4 text-sm text-brand">{form.drawingName}</span>}
             </label>
           )}
 
@@ -264,7 +264,7 @@ export default function QuoteBuilder() {
           <button
             type="button"
             onClick={next}
-            className="px-8 py-3.5 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase hover:bg-accent transition-colors"
+            className="px-8 py-3.5 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase hover:bg-brand transition-colors"
           >
             {step === STEPS.length - 1 ? "Generate Quote" : "Continue"}
           </button>

@@ -48,7 +48,7 @@ export default function About() {
                 key={item.y}
                 className="grid grid-cols-[80px_1fr] md:grid-cols-[120px_1fr] gap-6 border-t border-line py-8"
               >
-                <p className="font-display text-accent font-bold">{item.y}</p>
+                <p className="font-display text-brand font-bold">{item.y}</p>
                 <div>
                   <h3 className="font-display text-xl font-bold">{item.t}</h3>
                   <p className="mt-2 text-muted">{item.d}</p>

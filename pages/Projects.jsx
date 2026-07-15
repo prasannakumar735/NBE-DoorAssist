@@ -27,7 +27,7 @@ export default function Projects() {
                 }`}
               >
                 <Reveal>
-                  <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-accent">
+                  <p className="font-display text-[0.65rem] font-semibold tracking-[0.2em] uppercase text-brand">
                     {p.industry} · {p.location}
                   </p>
                   <h2 className="mt-4 font-display text-3xl md:text-5xl font-extrabold tracking-tight">{p.title}</h2>
@@ -59,7 +59,7 @@ export default function Projects() {
       <div className="max-w-site mx-auto px-5 md:px-8 lg:px-12 pt-20 text-center">
         <Link
           to="/quote-builder"
-          className="inline-flex px-8 py-4 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.16em] uppercase hover:bg-accent transition-colors"
+          className="inline-flex px-8 py-4 bg-ink text-white font-display text-[0.7rem] font-semibold tracking-[0.16em] uppercase hover:bg-brand transition-colors"
         >
           Start your project
         </Link>

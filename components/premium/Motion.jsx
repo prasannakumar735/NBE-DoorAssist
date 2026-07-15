@@ -40,8 +40,8 @@ export function MagneticButton({ href, to, children, className = "", dark = fals
 
   const classes = `inline-flex items-center justify-center px-8 py-4 font-display text-[0.7rem] font-semibold tracking-[0.18em] uppercase transition-colors duration-300 ${
     dark
-      ? "bg-ink text-white hover:bg-accent"
-      : "bg-white text-ink hover:bg-accent hover:text-white"
+      ? "bg-ink text-white hover:bg-brand"
+      : "bg-white text-ink hover:bg-brand hover:text-white"
   } ${className}`;
 
   const shared = {
@@ -78,7 +78,7 @@ export function MagneticButton({ href, to, children, className = "", dark = fals
 
 export function SectionLabel({ children }) {
   return (
-    <p className="font-display text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-accent">
+    <p className="font-display text-[0.68rem] font-semibold tracking-[0.28em] uppercase text-brand">
       {children}
     </p>
   );

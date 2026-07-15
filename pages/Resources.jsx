@@ -28,10 +28,10 @@ export default function Resources() {
                   <li key={item}>
                     <button
                       type="button"
-                      className="w-full flex items-center justify-between py-5 border-b border-line text-left hover:text-accent transition-colors group"
+                      className="w-full flex items-center justify-between py-5 border-b border-line text-left hover:text-brand transition-colors group"
                     >
                       <span className="font-display font-semibold text-lg">{item}</span>
-                      <span className="font-display text-[0.65rem] font-semibold tracking-[0.16em] uppercase text-muted group-hover:text-accent">
+                      <span className="font-display text-[0.65rem] font-semibold tracking-[0.16em] uppercase text-muted group-hover:text-brand">
                         Download
                       </span>
                     </button>
