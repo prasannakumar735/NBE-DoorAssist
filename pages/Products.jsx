@@ -3,6 +3,7 @@ import { ChevronRight, Loader2 } from "lucide-react";
 import ProductCard from "@/components/Products/ProductCard";
 import ProductFilters from "@/components/Products/ProductFilters";
 import ScrollReveal from "@/components/motion/ScrollReveal";
+import CTABanner from "@/components/home/CTABanner";
 import { createPageUrl } from "@/utils";
 
 export default function Products({
@@ -129,6 +130,7 @@ export default function Products({
           )}
         </div>
       </div>
+      <CTABanner />
     </div>
   );
 }
