@@ -6,6 +6,7 @@ import ProductFinder from "@/components/home/ProductFinder";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import IndustriesWeServe from "@/components/home/IndustriesWeServe";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
+import CaseStudySection from "@/components/home/CaseStudySection";
 import SupportSection from "@/components/home/SupportSection";
 import TrustSection from "@/components/home/TrustSection";
 import CTABanner from "@/components/home/CTABanner";
@@ -24,6 +25,7 @@ export default function Home() {
       <WhyChooseUs />
       <IndustriesWeServe />
       <FeaturedProducts products={products} />
+      <CaseStudySection />
       <SupportSection />
       <TrustSection />
       <CTABanner />
