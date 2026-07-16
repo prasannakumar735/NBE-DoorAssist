@@ -18,6 +18,9 @@ const PVC_TYPES = [
   { label: "Freezer Grade PVC", keyword: "freezer", grade: "freezer" },
   { label: "Anti-Insect PVC", keyword: "insect", grade: "anti_insect" },
   { label: "Heavy Duty / Forklift PVC", keyword: "ribbed", grade: null },
+  { label: "Welding PVC", keyword: "welding", grade: "welding" },
+  { label: "Anti-Static PVC", keyword: "anti-static", grade: null },
+  { label: "Coloured PVC", keyword: "coloured", grade: null },
   { label: "Replacement PVC Strips", keyword: "replacement", grade: null },
 ];
 
