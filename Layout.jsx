@@ -174,6 +174,14 @@ export default function Layout({ children }) {
                   Request a Quote
                 </motion.button>
               </a>
+              <a href={createPageUrl("Quote")} className="md:hidden">
+                <motion.button
+                  whileTap={{ scale: 0.96 }}
+                  className="bg-brand text-white px-3.5 py-2 rounded-lg text-xs font-semibold shadow-sm"
+                >
+                  Quote
+                </motion.button>
+              </a>
 
               {/* Mobile menu toggle */}
               <button
