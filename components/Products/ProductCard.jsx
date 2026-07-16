@@ -70,7 +70,7 @@ export default function ProductCard({
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="card-hover group relative bg-white border border-line rounded-xl overflow-hidden hover:border-brand/50 transition-colors shadow-sm"
+      className="card-hover group relative bg-white border border-line rounded-2xl overflow-hidden hover:border-brand/50 hover:shadow-lg transition-all shadow-sm"
     >
       <LinkWrapper href={detailHref} onClick={onOpenDetail} renderLink={renderLink}>
         {/* Image */}
@@ -88,7 +88,6 @@ export default function ProductCard({
               <Shield className="w-16 h-16 text-line" />
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
 
           {/* Category badge */}
           <div className="absolute top-4 left-4">
@@ -106,10 +105,10 @@ export default function ProductCard({
         </div>
 
         {/* Content */}
-        <div className="p-5">
+        <div className="p-6">
           <div className="flex items-start justify-between gap-3 mb-3">
             <div>
-              <h3 className="text-lg font-bold text-ink group-hover:text-brand transition-colors leading-tight">
+              <h3 className="text-lg font-bold font-heading text-ink group-hover:text-brand transition-colors leading-tight tracking-tight">
                 {product.title}
               </h3>
               {product.sku && (
@@ -157,7 +156,7 @@ export default function ProductCard({
       </LinkWrapper>
 
       {/* Bottom CTA */}
-      <div className="px-5 pb-5">
+      <div className="px-6 pb-6">
         <LinkWrapper href={ctaHref} onClick={onPrimaryAction} renderLink={renderLink}>
           <Button className="w-full bg-ink hover:bg-brand text-white transition-all rounded-xl text-sm font-semibold shadow-sm">
             {ctaLabel}
