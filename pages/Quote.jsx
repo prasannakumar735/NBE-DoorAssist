@@ -24,8 +24,8 @@ export default function Quote({ product, productId = "", prefill, uploadFile, su
 
       <div className="max-w-5xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <ScrollReveal>
-            <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+          <ScrollReveal className="lg:col-span-7">
+            <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
               <QuoteForm
                 productTitle={product?.title || ""}
                 productId={productId || ""}
