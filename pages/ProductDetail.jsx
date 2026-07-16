@@ -98,7 +98,13 @@ export default function ProductDetail({
                     className="w-full h-full"
                   >
                     {images[activeImage] ? (
-                      <img src={images[activeImage]} alt={product.title} className="w-full h-full object-cover" />
+                      <img
+                        src={images[activeImage]}
+                        alt={product.title}
+                        loading={activeImage === 0 ? "eager" : "lazy"}
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="w-full h-full object-cover"
+                      />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center">
                         <Shield className="w-24 h-24 text-line" />
@@ -130,7 +136,7 @@ export default function ProductDetail({
                       }`}
                     >
                       {img ? (
-                        <img src={img} alt="" className="w-full h-full object-cover" />
+                        <img src={img} alt="" loading="lazy" className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full bg-surface-low flex items-center justify-center">
                           <Shield className="w-6 h-6 text-line" />
@@ -251,6 +257,33 @@ export default function ProductDetail({
                     </div>
                   </div>
                 )}
+                {product.thickness_mm && (
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-line shadow-sm">
+                    <Ruler className="w-5 h-5 text-brand" />
+                    <div>
+                      <div className="text-xs text-on-surface-variant">Thickness</div>
+                      <div className="text-sm text-ink font-semibold">{product.thickness_mm}mm</div>
+                    </div>
+                  </div>
+                )}
+                {product.temperature_rating && (
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-line shadow-sm">
+                    <Thermometer className="w-5 h-5 text-brand" />
+                    <div>
+                      <div className="text-xs text-on-surface-variant">Temperature Rating</div>
+                      <div className="text-sm text-ink font-semibold">{product.temperature_rating}</div>
+                    </div>
+                  </div>
+                )}
+                {product.colour && (
+                  <div className="flex items-center gap-3 p-3 bg-white rounded-xl border border-line shadow-sm">
+                    <Shield className="w-5 h-5 text-brand" />
+                    <div>
+                      <div className="text-xs text-on-surface-variant">Colour</div>
+                      <div className="text-sm text-ink font-semibold">{product.colour}</div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* CTA */}
@@ -294,15 +327,47 @@ export default function ProductDetail({
                 </div>
               )}
 
+              {/* Applications */}
+              {product.applications?.length > 0 && (
+                <div className="mb-10">
+                  <h3 className="text-lg font-bold text-ink mb-3">Applications</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {product.applications.map((a) => (
+                      <Badge key={a} variant="outline" className="text-xs text-ink border-line bg-surface-low">
+                        {a}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Features */}
+              {product.features?.length > 0 && (
+                <div className="mb-10">
+                  <h3 className="text-lg font-bold text-ink mb-3">Features</h3>
+                  <ul className="space-y-2">
+                    {product.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 text-sm text-on-surface-variant leading-relaxed">
+                        <Shield className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {/* Benefits */}
               <div className="mb-10">
                 <h3 className="text-lg font-bold text-ink mb-3">Benefits</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {[
-                    { title: "Speed", desc: "High-cycle operation built for busy traffic flow." },
-                    { title: "Durability", desc: "Industrial-grade materials for demanding environments." },
-                    { title: "Safety", desc: "Site-ready options including sensors and access control." },
-                  ].map((b) => (
+                  {(product.benefits?.length > 0
+                    ? product.benefits.map((desc, i) => ({ title: `Benefit ${i + 1}`, desc }))
+                    : [
+                        { title: "Speed", desc: "High-cycle operation built for busy traffic flow." },
+                        { title: "Durability", desc: "Industrial-grade materials for demanding environments." },
+                        { title: "Safety", desc: "Site-ready options including sensors and access control." },
+                      ]
+                  ).map((b) => (
                     <div key={b.title} className="p-4 bg-white rounded-xl border border-line shadow-sm">
                       <div className="text-ink font-semibold text-sm">{b.title}</div>
                       <div className="text-on-surface-variant text-sm mt-1 leading-relaxed">{b.desc}</div>

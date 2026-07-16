@@ -22,6 +22,7 @@ const PVC_TYPES = [
   { label: "Anti-Static PVC", keyword: "anti-static", grade: null },
   { label: "Coloured PVC", keyword: "coloured", grade: null },
   { label: "Replacement PVC Strips", keyword: "replacement", grade: null },
+  { label: "PVC Rolls", keyword: "pvc roll", grade: null },
 ];
 
 const MEASURE_STEPS = [
@@ -153,7 +154,7 @@ export default function PvcStripCurtainsHub({ products = [], isLoading = false }
                 >
                   {sample?.image_url && (
                     <div className="aspect-[16/9] overflow-hidden bg-surface-low">
-                      <img src={sample.image_url} alt={type.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img src={sample.image_url} alt={type.label} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                   )}
                   <div className="p-5">

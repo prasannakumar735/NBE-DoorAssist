@@ -28,7 +28,10 @@ export default function ProductDetailContainer() {
   const hubHref = family === "pvc" ? "/pvc-strip-curtains" : "/rapid-roller-doors";
 
   const relatedProducts = product
-    ? allProducts.filter((p) => p.id !== product.id && p.category === product.category).slice(0, 3)
+    ? allProducts
+        .filter((p) => p.id !== product.id && p.category === product.category)
+        .filter((p) => (product.product_family ? p.product_family === product.product_family : true))
+        .slice(0, 3)
     : [];
 
   const renderLink = ({ href, className, children }) => (

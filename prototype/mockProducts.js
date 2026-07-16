@@ -1,3 +1,5 @@
+import { PVC_ROLL_PRODUCTS } from "./pvcRollCatalog";
+
 export const mockProducts = [
   {
     id: "prod-pvc-101",
@@ -301,6 +303,7 @@ export const mockProducts = [
     height_mm: 3000,
     rated_speed: "N/A",
   },
+  ...PVC_ROLL_PRODUCTS,
 ];
 
 export default mockProducts;

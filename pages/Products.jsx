@@ -21,9 +21,12 @@ export default function Products({
     const material = params.get("material") || "all";
     const stock = params.get("stock") || "all";
     const insulated = params.get("insulated") || "all";
+    const productFamily = params.get("productFamily") || "all";
+    const width = params.get("width") || "all";
+    const thickness = params.get("thickness") || "all";
     const sort = params.get("sort") || "featured";
 
-    return { search: q, category, material, stock, insulated, sort };
+    return { search: q, category, material, stock, insulated, productFamily, width, thickness, sort };
   }, []);
 
   const [filters, setFilters] = useState(initialFilters);
@@ -44,6 +47,9 @@ export default function Products({
     if (filters.stock !== "all") result = result.filter(p => p.stock_status === filters.stock);
     if (filters.insulated === "yes") result = result.filter(p => p.insulated === true);
     if (filters.insulated === "no") result = result.filter(p => p.insulated === false);
+    if (filters.productFamily && filters.productFamily !== "all") result = result.filter(p => p.product_family === filters.productFamily);
+    if (filters.width && filters.width !== "all") result = result.filter(p => String(p.width_mm) === String(filters.width));
+    if (filters.thickness && filters.thickness !== "all") result = result.filter(p => String(p.thickness_mm) === String(filters.thickness));
 
     if (filters.sort === "newest") result.sort((a, b) => new Date(b.created_date) - new Date(a.created_date));
     if (filters.sort === "featured") result.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));

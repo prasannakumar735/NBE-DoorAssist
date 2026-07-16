@@ -36,6 +36,28 @@ const insulationOptions = [
   { value: "no", label: "Non-Insulated" },
 ];
 
+const productFamilies = [
+  { value: "all", label: "All PVC Roll Families" },
+  { value: "coolroom_pvc_roll", label: "Coolroom PVC Roll" },
+  { value: "freezer_grade_pvc_roll", label: "Freezer Grade PVC Roll" },
+];
+
+const rollWidths = [
+  { value: "all", label: "All Widths" },
+  { value: "75", label: "75mm" },
+  { value: "100", label: "100mm" },
+  { value: "150", label: "150mm" },
+  { value: "200", label: "200mm" },
+  { value: "300", label: "300mm" },
+  { value: "400", label: "400mm" },
+];
+
+const rollThicknesses = [
+  { value: "all", label: "All Thicknesses" },
+  { value: "2", label: "2mm" },
+  { value: "3", label: "3mm" },
+];
+
 const sortOptions = [
   { value: "featured", label: "Featured" },
   { value: "newest", label: "Newest" },
@@ -77,12 +99,25 @@ export default function ProductFilters({ filters, onFilterChange, resultCount })
     if (key === "material") return materials.find((m) => m.value === val)?.label || val;
     if (key === "stock") return stockOptions.find((s) => s.value === val)?.label || val;
     if (key === "insulated") return val === "yes" ? "Insulated" : val === "no" ? "Non-insulated" : val;
+    if (key === "productFamily") return productFamilies.find((f) => f.value === val)?.label || val;
+    if (key === "width") return `${val}mm width`;
+    if (key === "thickness") return `${val}mm thickness`;
     return val;
   };
 
   const update = (key, value) => onFilterChange({ ...filters, [key]: value });
   const clearAll = () =>
-    onFilterChange({ search: "", category: "all", material: "all", stock: "all", insulated: "all", sort: "featured" });
+    onFilterChange({
+      search: "",
+      category: "all",
+      material: "all",
+      stock: "all",
+      insulated: "all",
+      productFamily: "all",
+      width: "all",
+      thickness: "all",
+      sort: "featured",
+    });
 
   return (
     <aside className="space-y-6 bg-white border border-line rounded-2xl p-6">
@@ -132,6 +167,9 @@ export default function ProductFilters({ filters, onFilterChange, resultCount })
       <FacetGroup title="Material" options={materials} value={filters.material} onChange={(v) => update("material", v)} />
       <FacetGroup title="Stock status" options={stockOptions} value={filters.stock} onChange={(v) => update("stock", v)} />
       <FacetGroup title="Insulation" options={insulationOptions} value={filters.insulated} onChange={(v) => update("insulated", v)} />
+      <FacetGroup title="PVC Roll Family" options={productFamilies} value={filters.productFamily} onChange={(v) => update("productFamily", v)} />
+      <FacetGroup title="PVC Roll Width" options={rollWidths} value={filters.width} onChange={(v) => update("width", v)} />
+      <FacetGroup title="PVC Roll Thickness" options={rollThicknesses} value={filters.thickness} onChange={(v) => update("thickness", v)} />
 
       <div className="pt-4 border-t border-line text-sm text-on-surface-variant">{resultCount} products</div>
     </aside>

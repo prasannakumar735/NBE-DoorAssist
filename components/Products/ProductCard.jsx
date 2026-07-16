@@ -79,6 +79,8 @@ export default function ProductCard({
             <motion.img
               src={product.image_url}
               alt={product.title}
+              loading="lazy"
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.6 }}
@@ -123,6 +125,12 @@ export default function ProductCard({
               <span className="flex items-center gap-1">
                 <Ruler className="w-3.5 h-3.5" />
                 {product.width_mm}×{product.height_mm}mm
+              </span>
+            )}
+            {product.width_mm && product.thickness_mm && (
+              <span className="flex items-center gap-1">
+                <Ruler className="w-3.5 h-3.5" />
+                {product.width_mm}mm × {product.thickness_mm}mm
               </span>
             )}
             {product.rated_speed && (
