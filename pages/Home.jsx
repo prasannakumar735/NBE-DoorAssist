@@ -3,10 +3,11 @@ import { base44 } from "@/api/base44Client";
 import HeroSection from "@/components/home/HeroSection";
 import CoreCategories from "@/components/home/CoreCategories";
 import ProductFinder from "@/components/home/ProductFinder";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
+import IndustriesWeServe from "@/components/home/IndustriesWeServe";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
-import HowItWorks from "@/components/home/HowItWorks";
-import TrustSection from "@/components/home/TrustSection";
 import SupportSection from "@/components/home/SupportSection";
+import TrustSection from "@/components/home/TrustSection";
 import CTABanner from "@/components/home/CTABanner";
 
 export default function Home() {
@@ -20,10 +21,11 @@ export default function Home() {
       <HeroSection />
       <CoreCategories />
       <ProductFinder />
+      <WhyChooseUs />
+      <IndustriesWeServe />
       <FeaturedProducts products={products} />
-      <TrustSection />
       <SupportSection />
-      <HowItWorks />
+      <TrustSection />
       <CTABanner />
     </>
   );

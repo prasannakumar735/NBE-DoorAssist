@@ -13,7 +13,7 @@ const features = [
 
 export default function SupportSection() {
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden">
+    <section className="py-24 bg-ink relative overflow-hidden">
       {/* Texture */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="h-full w-full" style={{
@@ -31,7 +31,7 @@ export default function SupportSection() {
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6 font-heading">
               Support for Rapid Doors &amp; PVC Strip Curtains
             </h2>
-            <p className="text-slate-400 text-lg mb-10 leading-relaxed">
+            <p className="text-white/60 text-lg mb-10 leading-relaxed">
               From industrial door servicing to replacement PVC strips, Drooov supports products throughout their operating life.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -41,7 +41,7 @@ export default function SupportSection() {
                 </Button>
               </a>
               <a href={createPageUrl("Service")}>
-                <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-6 rounded-xl font-semibold">
+                <Button size="lg" variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10 px-8 py-6 rounded-xl font-semibold">
                   Book a Service
                 </Button>
               </a>
@@ -53,13 +53,13 @@ export default function SupportSection() {
               <ScrollReveal key={i} delay={i * 0.1} direction="right">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="bg-slate-900 border border-slate-800 rounded-2xl p-6"
+                  className="bg-white/5 border border-white/10 rounded-2xl p-6"
                 >
                   <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center mb-4">
                     <f.icon className="w-6 h-6 text-brand" />
                   </div>
                   <h3 className="text-white font-bold mb-2">{f.title}</h3>
-                  <p className="text-sm text-slate-400">{f.desc}</p>
+                  <p className="text-sm text-white/60">{f.desc}</p>
                 </motion.div>
               </ScrollReveal>
             ))}

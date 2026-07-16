@@ -58,10 +58,12 @@ Dark hero sections use `bg-slate-900` with `text-slate-300` body copy and glassm
 
 ## Image assets
 
-- **Logo marks** (import directly, they are the brand): `OneDrive_3_4-26-2026/`
-  - `DRoooV 01_B+COLOR.png` — black + orange mark, used in the header ([Layout.jsx:9](Layout.jsx#L9))
-  - `DRoooV 01_W+COLOR.png` — white + orange (for dark backgrounds/footer)
-  - `DRoooV 01_B+B.png`, `DRoooV 01_W+W.png`, `Artboard 9.*`, `DRoooV 02_*` — mono/banner variants
+- **Logo marks** (import directly, they are the brand): `DRoooV LOGO/SVG/` (prefer SVG over the sibling `.png`/`.jpg` exports — same art, crisp at any size)
+  - `DRoooV 01_B+COLOR.svg` — the deconstructed D·R·V monogram, black letters + blue/gold/green interlocked rings. Used in the header ([Layout.jsx:8](Layout.jsx#L8)).
+  - `DRoooV 01_W+COLOR.svg` — same mark, white letters, for dark backgrounds (footer, [Layout.jsx:9](Layout.jsx#L9)).
+  - `DRoooV 01_B+B.svg` / `01_W+W.svg` — monochrome versions of the mark, for favicons or single-color print contexts where the tri-color rings won't render distinctly.
+  - `DRoooV 03_*` — horizontal wordmark ("DRoooV" spelled out with the rings interlocked in place of the O's). Use this for wide lockups: marketing banners, email headers, letterhead. Prefer it over the `02_*`/`DROOOV_WORD_*` wordmark variants, whose rings don't overlap and read as a rougher draft.
+  - `Artboard 9.*` — a faint/light-gray treatment of the 01 mark, for watermarks.
   - Note: these are logo tiles (626²) or horizontal banners (1042×251) — not product photos.
 - **Illustrations**: `public/isometric-warehouse.png` (+ `.svg`) — the floating isometric warehouse; reuse as an animated image.
 - **Photography**: Unsplash industrial placeholders (see [prototype/mockProducts.js](prototype/mockProducts.js) and [pages/Home.jsx:254](pages/Home.jsx#L254)) — `aspect-[4/3] rounded-xl bg-cover bg-center`.

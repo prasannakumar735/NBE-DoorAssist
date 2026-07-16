@@ -33,7 +33,7 @@ export default function CTABanner() {
               Enter your opening dimensions and application details.
             </p>
             <a href="/quote-builder" className="mx-auto md:mx-0">
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-base font-bold rounded-xl group">
+              <Button size="lg" variant="outline" className="bg-transparent border-white/30 text-white hover:bg-white/10 px-8 py-6 text-base font-bold rounded-xl group">
                 Configure PVC Curtain
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>

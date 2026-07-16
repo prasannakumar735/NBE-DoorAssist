@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { createPageUrl } from "@/utils";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown, Linkedin, Facebook, Instagram } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ChatWidget from "@/components/chat/ChatWidget";
 import MegaMenu from "@/components/nav/MegaMenu";
-import logoMarkLight from "@/OneDrive_3_4-26-2026/DRoooV 01_B+COLOR.png";
+import logoMarkLight from "@/DRoooV LOGO/SVG/DRoooV 01_B+COLOR.svg";
+import logoMarkDark from "@/DRoooV LOGO/SVG/DRoooV 01_W+COLOR.svg";
 
 const navLinks = [
   { name: "Products", href: "/products", mega: true },
-  { name: "Rapid Roller Doors", href: "/rapid-roller-doors" },
-  { name: "PVC Strip Curtains", href: "/pvc-strip-curtains" },
-  { name: "Solutions", href: "/industries" },
-  { name: "Service & Support", href: "/service" },
-  { name: "Resources", href: "/resources" },
+  { name: "Industries", href: "/industries" },
+  { name: "Service", href: "/service" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -25,7 +23,7 @@ const footerLinks = {
     { name: "Replacement PVC Strips", href: "/replacement-strips" },
     { name: "Compare Products", href: "/compare" },
   ],
-  Solutions: [
+  Industries: [
     { name: "Cold Storage", href: "/industries" },
     { name: "Food Processing", href: "/industries" },
     { name: "Warehousing", href: "/industries" },
@@ -45,9 +43,42 @@ const footerLinks = {
   ],
 };
 
+// Reads the actual rendered background colour of whatever sits directly above
+// the footer, so the footer can always invert against it (dark section -> light
+// footer, light section -> dark footer) regardless of how a given page is built.
+function isDarkColor(rgbString) {
+  const nums = rgbString.match(/[\d.]+/g);
+  if (!nums || nums.length < 3) return false;
+  const [r, g, b] = nums.map(Number);
+  const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  return luminance < 0.5;
+}
+
+// Atomic/interactive elements (buttons, links, icons) carry component-level
+// utility classes (e.g. a Button's `bg-background` base style) that don't
+// represent the section's actual background — skip them when reading colour.
+const ATOMIC_TAGS = new Set(["BUTTON", "INPUT", "IMG", "SVG", "PATH", "SPAN", "LABEL", "I", "A"]);
+
+function findTrailingBackground(root) {
+  let node = root.lastElementChild;
+  while (node && node.lastElementChild) {
+    node = node.lastElementChild;
+  }
+  while (node && node !== root) {
+    if (!ATOMIC_TAGS.has(node.tagName)) {
+      const bg = getComputedStyle(node).backgroundColor;
+      if (bg && !/rgba?\(0,\s*0,\s*0,\s*0\)/.test(bg)) return bg;
+    }
+    node = node.parentElement;
+  }
+  return getComputedStyle(root).backgroundColor;
+}
+
 export default function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [footerLight, setFooterLight] = useState(false);
+  const mainRef = useRef(null);
   const { pathname, search } = useLocation();
   const isHome = pathname === "/";
 
@@ -56,6 +87,30 @@ export default function Layout({ children }) {
     if (hrefQuery) return pathname === hrefPath && search === `?${hrefQuery}`;
     return pathname === hrefPath;
   };
+
+  useEffect(() => {
+    const recompute = () => {
+      if (!mainRef.current) return;
+      const bg = findTrailingBackground(mainRef.current);
+      setFooterLight(isDarkColor(bg));
+    };
+
+    recompute();
+    const raf = requestAnimationFrame(recompute);
+
+    const observer = new MutationObserver(recompute);
+    if (mainRef.current) {
+      observer.observe(mainRef.current, { childList: true, subtree: true, attributes: true });
+    }
+    const resizeObserver = new ResizeObserver(recompute);
+    if (mainRef.current) resizeObserver.observe(mainRef.current);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+      resizeObserver.disconnect();
+    };
+  }, [pathname]);
 
   return (
     <div className="min-h-screen bg-background text-foreground font-sans scrollbar-thin">
@@ -167,51 +222,64 @@ export default function Layout({ children }) {
       </header>
 
       {/* Page content */}
-      <main className={isHome ? "" : "pt-16 lg:pt-20"}>
+      <main ref={mainRef} className={isHome ? "" : "pt-16 lg:pt-20"}>
         {children}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-line">
+      {/* Footer — inverted against whatever background the page ends on */}
+      <footer className={footerLight ? "bg-white border-t border-line" : "bg-ink"}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
-            <div className="col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <img
-                  src={logoMarkLight}
-                  alt="drooov"
-                  className="h-14 w-14 rounded-2xl object-contain"
-                />
-              </div>
-              <p className="text-on-surface-variant text-sm leading-relaxed max-w-sm">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[280px_1fr] lg:gap-16">
+            <div>
+              <img
+                src={footerLight ? logoMarkLight : logoMarkDark}
+                alt="drooov"
+                className="h-14 w-14 object-contain"
+              />
+              <p className={`mt-4 max-w-[260px] text-sm leading-relaxed ${footerLight ? "text-ink/60" : "text-white/60"}`}>
                 Drooov supplies rapid roller doors and PVC strip curtains for Australian industrial, cold storage and food processing facilities.
               </p>
-              <div className="mt-4 space-y-1 text-sm text-on-surface-variant">
-                <p>support@drooov.com.au</p>
-                <p>1300 DROOOV</p>
-                <p>Australia-wide</p>
-              </div>
             </div>
-            {Object.entries(footerLinks).map(([heading, links]) => (
-              <div key={heading}>
-                <h4 className="text-ink font-bold text-sm mb-4">{heading}</h4>
-                <div className="space-y-2">
-                  {links.map(link => (
-                    <a key={link.name} href={link.href} className="block text-sm text-on-surface-variant hover:text-brand transition-colors">
-                      {link.name}
-                    </a>
-                  ))}
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-10">
+              {Object.entries(footerLinks).map(([heading, links]) => (
+                <div key={heading}>
+                  <h4 className={`font-bold text-xs mb-4 tracking-wide uppercase ${footerLight ? "text-ink" : "text-white"}`}>{heading}</h4>
+                  <div className="space-y-2.5">
+                    {links.map(link => (
+                      <a key={link.name} href={link.href} className={`block text-xs transition-colors ${footerLight ? "text-ink/60 hover:text-brand" : "text-white/60 hover:text-brandLight"}`}>
+                        {link.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <div>
+                <h4 className={`font-bold text-xs mb-4 tracking-wide uppercase ${footerLight ? "text-ink" : "text-white"}`}>Contact</h4>
+                <div className={`space-y-2.5 text-xs ${footerLight ? "text-ink/60" : "text-white/60"}`}>
+                  <p>support@drooov.com.au</p>
+                  <p>1300 DROOOV</p>
+                  <p>Australia-wide</p>
+                </div>
+                <div className="mt-4 flex items-center gap-2.5">
+                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={`w-8 h-8 shrink-0 rounded-full border flex items-center justify-center hover:text-white hover:bg-brand hover:border-brand transition-colors ${footerLight ? "border-line bg-surface-low text-ink/60" : "border-white/10 bg-white/5 text-white/70"}`}>
+                    <Linkedin className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className={`w-8 h-8 shrink-0 rounded-full border flex items-center justify-center hover:text-white hover:bg-brand hover:border-brand transition-colors ${footerLight ? "border-line bg-surface-low text-ink/60" : "border-white/10 bg-white/5 text-white/70"}`}>
+                    <Facebook className="w-3.5 h-3.5" />
+                  </a>
+                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className={`w-8 h-8 shrink-0 rounded-full border flex items-center justify-center hover:text-white hover:bg-brand hover:border-brand transition-colors ${footerLight ? "border-line bg-surface-low text-ink/60" : "border-white/10 bg-white/5 text-white/70"}`}>
+                    <Instagram className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <p className="text-xs text-on-surface-variant">
+          <div className={`mt-12 pt-8 text-center sm:text-left border-t ${footerLight ? "border-line" : "border-white/10"}`}>
+            <p className={`text-xs ${footerLight ? "text-ink/50" : "text-white/50"}`}>
               © 2026 drooov. All rights reserved. Rapid Roller Doors &amp; PVC Strip Curtains — Engineered for Australia.
             </p>
-            <a href={createPageUrl("Quote")} className="text-xs font-semibold text-brand hover:text-brandDark transition-colors">
-              Request a Quote →
-            </a>
           </div>
         </div>
       </footer>
