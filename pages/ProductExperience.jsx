@@ -54,7 +54,7 @@ export default function ProductExperience() {
         </Link>
         <a
           href="#viewer"
-          className="px-6 py-4 font-display text-[0.68rem] font-semibold tracking-[0.14em] uppercase text-muted hover:text-ink"
+          className="px-6 py-4 font-display text-[0.68rem] font-semibold tracking-[0.14em] uppercase text-muted-foreground hover:text-ink"
         >
           360° Viewer
         </a>
@@ -68,7 +68,7 @@ export default function ProductExperience() {
               type="button"
               onClick={() => setTab(t)}
               className={`pb-4 font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase transition-colors ${
-                tab === t ? "text-ink border-b-2 border-ink" : "text-muted hover:text-ink"
+                tab === t ? "text-ink border-b-2 border-ink" : "text-muted-foreground hover:text-ink"
               }`}
             >
               {t}
@@ -83,7 +83,7 @@ export default function ProductExperience() {
             <div className="grid lg:grid-cols-2 gap-16">
               <div>
                 <h2 className="font-display text-3xl font-extrabold tracking-tight">System overview</h2>
-                <p className="mt-5 text-muted text-lg font-light leading-relaxed">
+                <p className="mt-5 text-muted-foreground text-lg font-light leading-relaxed">
                   {product.tagline} Designed for Australian industrial facilities with specification-led support,
                   certified installation partners, and documented service programs.
                 </p>
@@ -97,8 +97,8 @@ export default function ProductExperience() {
               </div>
               <div id="viewer" className="aspect-square bg-mist border border-line flex items-center justify-center">
                 <div className="text-center px-8">
-                  <p className="font-display text-sm font-semibold tracking-[0.2em] uppercase text-muted">360° Viewer</p>
-                  <p className="mt-3 text-muted text-sm">Interactive viewer placeholder — product photography suite.</p>
+                  <p className="font-display text-sm font-semibold tracking-[0.2em] uppercase text-muted-foreground">360° Viewer</p>
+                  <p className="mt-3 text-muted-foreground text-sm">Interactive viewer placeholder — product photography suite.</p>
                 </div>
               </div>
             </div>
@@ -123,7 +123,7 @@ export default function ProductExperience() {
               {product.features.map((f) => (
                 <div key={f} className="border-t border-ink pt-6">
                   <h3 className="font-display text-xl font-bold">{f}</h3>
-                  <p className="mt-3 text-sm text-muted leading-relaxed">
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                     Engineered detail for uptime, safety and maintainability in high-demand facilities.
                   </p>
                 </div>
@@ -143,7 +143,7 @@ export default function ProductExperience() {
             </div>
           )}
           {tab === "Warranty" && (
-            <p className="max-w-2xl text-lg text-muted font-light leading-relaxed">
+            <p className="max-w-2xl text-lg text-muted-foreground font-light leading-relaxed">
               Structural and drive warranties available by series. Extended service contracts and annual inspection
               programs supported Australia-wide.
             </p>
@@ -158,7 +158,7 @@ export default function ProductExperience() {
                     className="text-left p-6 border border-line bg-white hover:border-ink transition-colors font-display font-semibold"
                   >
                     {d}
-                    <span className="block mt-2 text-xs text-muted font-sans font-normal tracking-normal">
+                    <span className="block mt-2 text-xs text-muted-foreground font-sans font-normal tracking-normal">
                       Download
                     </span>
                   </button>
@@ -175,7 +175,7 @@ export default function ProductExperience() {
               ].map(([q, a]) => (
                 <div key={q} className="border-b border-line pb-6">
                   <h3 className="font-display text-lg font-bold">{q}</h3>
-                  <p className="mt-2 text-muted">{a}</p>
+                  <p className="mt-2 text-muted-foreground">{a}</p>
                 </div>
               ))}
             </div>

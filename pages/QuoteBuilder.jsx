@@ -9,7 +9,7 @@ function StepDimensions({ value = {}, onChange }) {
   return (
     <div className="mt-8 grid grid-cols-2 gap-6">
       <label className="block">
-        <span className="text-xs font-display font-semibold tracking-[0.14em] uppercase text-muted">Width mm</span>
+        <span className="text-xs font-display font-semibold tracking-[0.14em] uppercase text-muted-foreground">Width mm</span>
         <input
           type="number"
           value={value.width || ""}
@@ -18,7 +18,7 @@ function StepDimensions({ value = {}, onChange }) {
         />
       </label>
       <label className="block">
-        <span className="text-xs font-display font-semibold tracking-[0.14em] uppercase text-muted">Height mm</span>
+        <span className="text-xs font-display font-semibold tracking-[0.14em] uppercase text-muted-foreground">Height mm</span>
         <input
           type="number"
           value={value.height || ""}
@@ -52,9 +52,9 @@ function StepChoice({ options, value, onChange }) {
 function StepUpload({ value, onChange }) {
   return (
     <label className="mt-8 flex flex-col items-center justify-center border border-dashed border-line p-12 cursor-pointer hover:border-ink transition-colors">
-      <Upload className="w-6 h-6 text-muted mb-2" />
+      <Upload className="w-6 h-6 text-muted-foreground mb-2" />
       <span className="font-display font-semibold tracking-[0.14em] uppercase text-sm">Upload file</span>
-      <span className="mt-2 text-sm text-muted">PDF, DWG, or image — optional</span>
+      <span className="mt-2 text-sm text-muted-foreground">PDF, DWG, or image — optional</span>
       <input
         type="file"
         className="sr-only"
@@ -76,7 +76,7 @@ function StepContact({ value = {}, onChange }) {
         ["phone", "Phone"],
       ].map(([key, label]) => (
         <label key={key} className="block">
-          <span className="text-xs font-display font-semibold tracking-[0.14em] uppercase text-muted">{label}</span>
+          <span className="text-xs font-display font-semibold tracking-[0.14em] uppercase text-muted-foreground">{label}</span>
           <input
             value={value[key] || ""}
             onChange={(e) => onChange({ ...value, [key]: e.target.value })}
@@ -173,7 +173,7 @@ export default function QuoteBuilder() {
           <h1 className="mt-4 font-display text-4xl md:text-5xl font-extrabold tracking-tight">
             We've received your enquiry
           </h1>
-          <p className="mt-4 text-muted font-light">
+          <p className="mt-4 text-muted-foreground font-light">
             {flow.label} · one of our team will respond within 24 hours with a tailored quote.
           </p>
           <Link
@@ -193,7 +193,7 @@ export default function QuoteBuilder() {
         <Reveal>
           <SectionLabel>Quote Builder</SectionLabel>
           <h1 className="mt-3 font-display text-4xl md:text-5xl font-extrabold tracking-tight">{flow.label}</h1>
-          <p className="mt-3 text-muted font-light">{flow.steps.length} precise steps. Project-ready quotation.</p>
+          <p className="mt-3 text-muted-foreground font-light">{flow.steps.length} precise steps. Project-ready quotation.</p>
         </Reveal>
 
         <div className="mt-10 flex gap-1">
@@ -202,7 +202,7 @@ export default function QuoteBuilder() {
               <div className={`h-1 ${i <= step ? "bg-ink" : "bg-line"}`} />
               <p
                 className={`mt-2 text-[0.55rem] font-display font-semibold tracking-[0.08em] uppercase hidden sm:block ${
-                  i === step ? "text-ink" : "text-muted"
+                  i === step ? "text-ink" : "text-muted-foreground"
                 }`}
               >
                 {s.title}
@@ -247,7 +247,7 @@ export default function QuoteBuilder() {
             type="button"
             onClick={back}
             disabled={step === 0 || status === "submitting"}
-            className="px-6 py-3 font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase text-muted disabled:opacity-30"
+            className="px-6 py-3 font-display text-[0.7rem] font-semibold tracking-[0.14em] uppercase text-muted-foreground disabled:opacity-30"
           >
             Back
           </button>

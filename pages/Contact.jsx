@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import { MapPin, ExternalLink } from "lucide-react";
 import { Reveal, SectionLabel } from "@/components/premium/Motion";
 
 export default function Contact() {
   return (
-    <div className="bg-paper min-h-screen pt-28 pb-24">
+    <div className="bg-paper pt-28 pb-24">
       <div className="max-w-site mx-auto px-5 md:px-8 lg:px-12">
         <Reveal>
           <SectionLabel>Contact</SectionLabel>
@@ -26,13 +27,13 @@ export default function Contact() {
             <div className="grid sm:grid-cols-2 gap-4">
               {["Name", "Email", "Company", "Phone"].map((label) => (
                 <label key={label} className="block">
-                  <span className="text-xs text-muted">{label}</span>
+                  <span className="text-xs text-muted-foreground">{label}</span>
                   <input required className="mt-1 w-full border border-line px-3 py-3 outline-none focus:border-ink" />
                 </label>
               ))}
             </div>
             <label className="block">
-              <span className="text-xs text-muted">Request type</span>
+              <span className="text-xs text-muted-foreground">Request type</span>
               <select className="mt-1 w-full border border-line px-3 py-3 outline-none">
                 <option>Quote Request</option>
                 <option>Service Request</option>
@@ -41,7 +42,7 @@ export default function Contact() {
               </select>
             </label>
             <label className="block">
-              <span className="text-xs text-muted">Project intent</span>
+              <span className="text-xs text-muted-foreground">Project intent</span>
               <select className="mt-1 w-full border border-line px-3 py-3 outline-none">
                 <option>PVC Strip Curtains</option>
                 <option>Rapid Roller Doors</option>
@@ -50,10 +51,10 @@ export default function Contact() {
               </select>
             </label>
             <label className="block">
-              <span className="text-xs text-muted">Message</span>
+              <span className="text-xs text-muted-foreground">Message</span>
               <textarea rows={4} className="mt-1 w-full border border-line px-3 py-3 outline-none focus:border-ink" />
             </label>
-            <p className="text-xs text-muted">
+            <p className="text-xs text-muted-foreground">
               Typical response within one business day. Your details are used only for this enquiry.
             </p>
             <button
@@ -65,18 +66,25 @@ export default function Contact() {
           </form>
 
           <div className="space-y-6">
-            <div className="aspect-[4/3] bg-mist border border-line overflow-hidden relative">
-              <iframe
-                title="DROOOV Australia"
-                className="absolute inset-0 w-full h-full grayscale contrast-125"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                src="https://maps.google.com/maps?q=Melbourne%20Australia&t=&z=11&ie=UTF8&iwloc=&output=embed"
-              />
-            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Melbourne+Australia"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group aspect-[4/3] bg-mist border border-line overflow-hidden relative flex flex-col items-center justify-center gap-3 text-center px-6 hover:border-brand/50 transition-colors"
+            >
+              <MapPin className="w-8 h-8 text-brand" />
+              <div>
+                <p className="font-display font-bold text-ink">Melbourne, VIC</p>
+                <p className="mt-1 text-sm text-muted-foreground">Australia-wide service &amp; delivery</p>
+              </div>
+              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand group-hover:text-brandDark">
+                Open in Google Maps
+                <ExternalLink className="w-3.5 h-3.5" />
+              </span>
+            </a>
             <div className="space-y-3 text-sm">
               <p className="font-display font-bold text-lg">DROOOV</p>
-              <p className="text-muted">1300 DROOOV · Australia-wide</p>
+              <p className="text-muted-foreground">1300 DROOOV · Australia-wide</p>
               <a href="mailto:support@drooov.com.au" className="text-brand hover:underline">
                 support@drooov.com.au
               </a>

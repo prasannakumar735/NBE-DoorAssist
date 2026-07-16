@@ -14,7 +14,7 @@ export default function Resources() {
         <Reveal>
           <SectionLabel>Resource Centre</SectionLabel>
           <h1 className="mt-4 font-display text-5xl md:text-7xl font-extrabold tracking-tight">Download Centre</h1>
-          <p className="mt-4 max-w-xl text-muted text-lg font-light">
+          <p className="mt-4 max-w-xl text-muted-foreground text-lg font-light">
             Brochures, certificates, CAD, BIM, installation guides and technical manuals.
           </p>
         </Reveal>
@@ -31,7 +31,7 @@ export default function Resources() {
                       className="w-full flex items-center justify-between py-5 border-b border-line text-left hover:text-brand transition-colors group"
                     >
                       <span className="font-display font-semibold text-lg">{item}</span>
-                      <span className="font-display text-[0.65rem] font-semibold tracking-[0.16em] uppercase text-muted group-hover:text-brand">
+                      <span className="font-display text-[0.65rem] font-semibold tracking-[0.16em] uppercase text-muted-foreground group-hover:text-brand">
                         Download
                       </span>
                     </button>

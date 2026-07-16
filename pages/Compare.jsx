@@ -81,7 +81,7 @@ export default function Compare() {
           <Reveal>
             <SectionLabel>Comparison</SectionLabel>
             <h1 className="mt-4 font-display text-5xl md:text-7xl font-extrabold tracking-tight">Compare products</h1>
-            <p className="mt-4 max-w-xl text-muted text-lg font-light">
+            <p className="mt-4 max-w-xl text-muted-foreground text-lg font-light">
               Rapid roller doors and PVC strip curtains are different product families — choose which one you'd
               like to compare.
             </p>
@@ -93,7 +93,7 @@ export default function Compare() {
               className="p-8 text-left border border-line hover:border-ink transition-colors"
             >
               <h2 className="font-display text-2xl font-bold tracking-tight">Rapid Roller Doors</h2>
-              <p className="mt-2 text-muted text-sm">{rapidDoorProducts.length} products available to compare</p>
+              <p className="mt-2 text-muted-foreground text-sm">{rapidDoorProducts.length} products available to compare</p>
             </button>
             <button
               type="button"
@@ -101,7 +101,7 @@ export default function Compare() {
               className="p-8 text-left border border-line hover:border-ink transition-colors"
             >
               <h2 className="font-display text-2xl font-bold tracking-tight">PVC Strip Curtains</h2>
-              <p className="mt-2 text-muted text-sm">{pvcProducts.length} products available to compare</p>
+              <p className="mt-2 text-muted-foreground text-sm">{pvcProducts.length} products available to compare</p>
             </button>
           </div>
         </div>
@@ -117,14 +117,14 @@ export default function Compare() {
           <h1 className="mt-4 font-display text-5xl md:text-7xl font-extrabold tracking-tight">
             Compare {family === "pvc" ? "PVC strip curtains" : "rapid roller doors"}
           </h1>
-          <p className="mt-4 max-w-xl text-muted text-lg font-light">
+          <p className="mt-4 max-w-xl text-muted-foreground text-lg font-light">
             Side-by-side specification comparison using verified product data. Select up to 4 products.
           </p>
           <div className="mt-4 flex gap-4">
             <button
               type="button"
               onClick={() => setParams({})}
-              className="text-sm font-display font-semibold tracking-[0.1em] uppercase text-muted hover:text-ink"
+              className="text-sm font-display font-semibold tracking-[0.1em] uppercase text-muted-foreground hover:text-ink"
             >
               ← Choose a different product family
             </button>
@@ -148,13 +148,13 @@ export default function Compare() {
         </div>
 
         {selectedProducts.length === 0 ? (
-          <p className="mt-14 text-muted">Select at least one product above to compare.</p>
+          <p className="mt-14 text-muted-foreground">Select at least one product above to compare.</p>
         ) : (
           <div className="mt-10 overflow-x-auto border border-line bg-white">
             <table className="w-full min-w-[640px] text-left border-collapse">
               <thead className="sticky top-20 z-20 bg-white border-b border-line shadow-sm">
                 <tr>
-                  <th className="p-4 md:p-5 font-display text-[0.65rem] font-semibold tracking-[0.14em] uppercase text-muted w-40">
+                  <th className="p-4 md:p-5 font-display text-[0.65rem] font-semibold tracking-[0.14em] uppercase text-muted-foreground w-40">
                     Spec
                   </th>
                   {selectedProducts.map((p) => (
@@ -170,7 +170,7 @@ export default function Compare() {
                   if (values.every((v) => !v)) return null;
                   return (
                     <tr key={attr.key} className="border-t border-line hover:bg-mist/50 transition-colors">
-                      <th className="p-4 md:p-5 font-display text-xs font-semibold tracking-[0.08em] uppercase text-muted sticky left-0 bg-white">
+                      <th className="p-4 md:p-5 font-display text-xs font-semibold tracking-[0.08em] uppercase text-muted-foreground sticky left-0 bg-white">
                         {attr.label}
                       </th>
                       {selectedProducts.map((p, i) => (
