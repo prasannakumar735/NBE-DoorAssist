@@ -20,7 +20,7 @@ export default function ParallaxSection({ children, className = "", speed = 0.3,
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${bgImage})` }}
           />
-          <div className="absolute inset-0 bg-slate-900/70" />
+          <div className="absolute inset-0 bg-white/75" />
         </motion.div>
       )}
       <div className="relative z-10">{children}</div>

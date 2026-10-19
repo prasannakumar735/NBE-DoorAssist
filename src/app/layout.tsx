@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
-import ChatWidgetLoader from "@/components/chat/ChatWidgetLoader";
-import Footer from "@/src/components/ui/Footer";
-import Navbar from "@/components/Navbar";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -19,9 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "drooov - Industrial Rapid Roller Doors",
+  title: "NBE Door Assist — Smart Door Management Platform",
   description:
-    "Professional rapid roller door systems for Australian warehouses, cold storage, and distribution centres",
+    "Monitor, control and manage your industrial rapid doors from anywhere in Australia. Powered by NBE Australia.",
 };
 
 export default function RootLayout({
@@ -36,13 +33,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-screen bg-background font-body text-text-primary antialiased"
+        className="min-h-screen bg-[#0a0f1e] font-body antialiased"
         suppressHydrationWarning
       >
-        <Navbar />
-        <main className="pt-20">{children}</main>
-        <Footer />
-        <ChatWidgetLoader />
+        {children}
       </body>
     </html>
   );
